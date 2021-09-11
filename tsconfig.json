@@ -7,8 +7,9 @@
       "esnext"
     ],
     "allowJs": true,
+    "checkJs": false,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -16,13 +17,47 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "types": [
+      "react",
+      "react-dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/interfaces/*": [
+        "interfaces/*"
+      ],
+      "@/modules/*": [
+        "modules/*"
+      ],
+      "@/original/*": [
+        "components/Original/*"
+      ],
+      "@/shimmered/*": [
+        "components/Shimmered/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/shimmeredModules/*": [
+        "shimmeredModules/*"
+      ],
+      "@/generals/*": [
+        "generals/*"
+      ],
+    }
   },
+  "types": [
+    "node"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "generals/timeSince.js"  ],
   "exclude": [
     "node_modules"
   ]

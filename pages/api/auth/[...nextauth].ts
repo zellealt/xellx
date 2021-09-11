@@ -1,8 +1,24 @@
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+import NextAuth from "next-auth";
+import { NextApiRequest, NextApiResponse } from "next-auth/internals/utils";
+import { JWT } from "next-auth/jwt";
+import Providers from "next-auth/providers";
+
+interface user {
+  accessToken: any;
+  refreshToken: any;
+  id: any;
+  discriminator: any;
+}
+
+interface token {
+  accessToken: any;
+  refreshToken: any;
+  id: any;
+  discriminator: any;
+}
 
 const options = {
-  site: 'http://localhost:3000',
+  site: "http://localhost:4000",
 
   // Configure one or more authentication providers
   providers: [
@@ -12,17 +28,66 @@ const options = {
       scope: "guilds identify",
     }),
   ],
+  session: {
+    jwt: true,
+  },
+  jwt: {
+    signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
+  },
+  callbacks: {
+    jwt: async (
+      token: token | any,
+      user: any,
+      account:
+        | {
+            accessToken: any;
+            refreshToken: any;
+          }
+        | any,
+      profile: {
+        id: any;
+        discriminator: any;
+      }
+    ) => {
+      if (user) {
+        token.accessToken = account.accessToken;
+        token.refreshToken = account.refreshToken;
+        token.id = profile.id;
+        token.discriminator = profile.discriminator;
+      }
+      return Promise.resolve(token);
+    },
+    session: async (session: { user: user } | any, token: token | any) => {
+      session.user.accessToken = token.accessToken;
+      session.user.refreshToken = token.refreshToken;
+      session.user.id = token.id;
+      session.user.discriminator = token.discriminator;
+
+      return session;
+    },
+  },
 
   database: {
-    type: 'postgresql',
-    host: '127.0.0.1',
-    port: 3306,
-    username: 'zel',
-    password: 'MangoLovesJacob',
-    database: 'dashboard_login',
-    entityPrefix: 'nextauth_',
-    synchronize: true
-  }
-}
+    type: "postgres",
+    host: "localhost",
+    port: 5432,
+    username: "postgres",
+    password: "zel",
+    database: "zel_bot",
+    entityPrefix: "na_",
+    synchronize: true,
+  },
+  // database: {
+  //   type: "postgres",
+  //   host: "localhost",
+  //   port: 5432,
+  //   username: "zelle",
+  //   password: "zel",
+  //   database: "zel_dash",
+  //   entityPrefix: "nextauth_",
+  //   synchronize: true,
+  // },
+};
 
-export default (req, res) => NextAuth(req, res, options)
+export default (req: NextApiRequest, res: NextApiResponse<any>) =>
+  NextAuth(req, res, options);

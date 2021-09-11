@@ -1,19 +1,14 @@
-import { useSession, signIn, signOut } from "next-auth/client"
+import Title from "@/modules/Meta/Title";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
 export default function Index() {
-  const [session, loading] = useSession()
-  if (session) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    )
-  }
-  return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn("discord")}>Sign in</button>
-    </>
-  )
+  const router = useRouter();
+  useEffect(() => {
+    router.push({
+      pathname: "/dashboard",
+    });
+  });
+
+  return <Title title="Dashboard" />;
 }

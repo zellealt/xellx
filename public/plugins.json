@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Moderation",
+        "id": "moderation",
+        "long_desc": "Disable and enable moderation commands such as, ban, kick, and warn",
+        "short_desc": "Commands such as, ban, kick and warn.",
+        "commands": [
+            {
+                "name": "Ban",
+                "desc": "Bans the user specified",
+                "id": "ban"
+            },
+            {
+                "name": "Kick",
+                "desc": "Kicks the user specified",
+                "id": "kick"
+            },
+            {
+                "name": "Warn",
+                "desc": "Warns the user specified",
+                "id": "warn"
+            }
+        ]
+    },
+    {
+        "name": "General",
+        "id": "general",
+        "long_desc": "Disable and enable commands such as, info.",
+        "short_desc": "Commands such as, info.",
+        "commands": [
+            {
+                "name": "Info",
+                "desc": "Shows information about user specified.",
+                "id": "info"
+            }
+        ]
+    }
+]
