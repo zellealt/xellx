@@ -75,7 +75,7 @@ const options = {
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
     entityPrefix: "na_",
-    synchronize: false,
+    synchronize: true,
   },
 };
 
