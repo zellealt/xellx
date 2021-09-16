@@ -9,12 +9,16 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      scale: {
+        '500': '5',
+      },
       backgroundImage: (theme) => ({
         check: "url('/icons/check.svg')",
         darkcheck: "url('/icons/darkcheck.svg')",
       }),
       spacing: {
         '11': '2.75rem',
+        '384': '96rem',
       },
       zIndex: {
         '-1': '-1',

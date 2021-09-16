@@ -5,6 +5,8 @@ import discordGuild from "@/interfaces/discordGuild";
 import fetch_manageable_guild from "@/lib/fetch_manageable_guild";
 import Title from "@/modules/Meta/Title";
 import Unauthorized from "@/original/Error/Unauthorized";
+import check_session from "@/lib/check_session";
+import invite_bot_specific_server from "@/lib/invite_bot_specific_server";
 
 export default function ManageServer(props: {
   guild: discordGuild;
@@ -15,32 +17,27 @@ export default function ManageServer(props: {
   // @ts-ignore
   if (props.guild === false) {
     useEffect(() => {
-      window.location.href =
-        "https://discord.com/oauth2/authorize?client_id=870400020757745694&scope=bot%20applications.commands&guild_id=" +
-        props.id +
-        "&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A4000%2Fapi%2Fget_server&permissions=2134207679";
+      invite_bot_specific_server(props.id);
     }, []);
     return <div></div>;
   }
+
+  const sessioned = check_session(session, loading, false);
 
   if (props.guild === null) {
     return <Unauthorized />;
   }
 
-  if (!loading) {
-    if (session) {
-      return (
-        <>
-          <Title title={"Managing " + props.guild.name} />
+  if (sessioned === true) {
+    return (
+      <>
+        <Title title={"Managing " + props.guild.name} />
 
-          <ManageGuildLayer guild={props.guild} />
-        </>
-      );
-    } else {
-      return <div></div>;
-    }
+        <ManageGuildLayer guild={props.guild} />
+      </>
+    );
   } else {
-    return <div></div>;
+    return sessioned;
   }
 }
 

@@ -7,16 +7,16 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-function get_text_color_pre(color: number) {
-  return get_text_color(color, window, localStorage);
-}
-
 const Select = (props: {
   data: any;
   name: string;
   selected: any;
   setSelected: any;
 }) => {
+  function get_text_color_pre(color: number) {
+    return get_text_color(color, window, localStorage);
+  }
+
   let selected = props.selected;
   let setSelected = props.setSelected;
 

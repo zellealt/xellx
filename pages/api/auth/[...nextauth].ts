@@ -18,7 +18,7 @@ interface token {
 }
 
 const options = {
-  site: "http://localhost:4000",
+  site: process.env.NEXTAUTH_URL,
 
   // Configure one or more authentication providers
   providers: [
@@ -69,24 +69,14 @@ const options = {
 
   database: {
     type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "zel",
-    database: "zel_bot",
+    host: process.env.IP,
+    port: process.env.PORT,
+    username: process.env.USERNAME,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
     entityPrefix: "na_",
-    synchronize: true,
+    synchronize: false,
   },
-  // database: {
-  //   type: "postgres",
-  //   host: "localhost",
-  //   port: 5432,
-  //   username: "zelle",
-  //   password: "zel",
-  //   database: "zel_dash",
-  //   entityPrefix: "nextauth_",
-  //   synchronize: true,
-  // },
 };
 
 export default (req: NextApiRequest, res: NextApiResponse<any>) =>

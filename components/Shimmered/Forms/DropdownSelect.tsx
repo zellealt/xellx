@@ -7,10 +7,6 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-function get_text_color_pre(color: number) {
-  return get_text_color(color, window, localStorage);
-}
-
 const Select = (props: { name: string; label: string }) => {
   return (
     <Listbox value={() => null} onChange={() => null}>
@@ -20,7 +16,7 @@ const Select = (props: { name: string; label: string }) => {
         </a>
       </Listbox.Label>
       <div className="mt-1 w-full">
-        <Listbox.Button className="relative w-48 bg-white dark:bg-gray-700 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default sm:text-sm animate-pulse">
+        <Listbox.Button className="relative w-48 bg-gray-200 dark:bg-gray-700 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default sm:text-sm animate-pulse">
           <span className="flex items-center">
             <span className="ml-3 block truncate text-transparent">
               {props.name}

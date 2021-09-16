@@ -7,43 +7,42 @@ import UserCard from "modules/User/UserCard";
 import ThemeSelection from "@/modules/User/ThemeSelection";
 import Title from "@/modules/Meta/Title";
 import DeleteAccount from "@/modules/User/DeleteAccount";
+import check_session from "@/lib/check_session";
 
 export default function Settings() {
   const [session, loading] = useSession();
 
-  if (!loading) {
-    if (!session) {
-      return <div></div>;
-    } else {
-      return (
-        <>
-          <Title title="User Settings" />
-          <PageHeader
-            padding={true}
-            fullWidth={false}
-            rightContent={null}
-            leftTitle="Settings"
-            content={
-              <div>
-                <UserCard />
+  const sessioned = check_session(session, loading, false);
 
-                <Spacer px={12} />
+  if (sessioned === true) {
+    return (
+      <>
+        <Title title="User Settings" />
+        <PageHeader
+          padding={true}
+          fullWidth={false}
+          rightContent={null}
+          leftTitle="Settings"
+          content={
+            <div>
+              <UserCard />
 
-                <Seperator />
+              <Spacer px={12} />
 
-                <ThemeSelection />
-                <Spacer px={12} />
+              <Seperator />
 
-                <DeleteAccount />
-              </div>
-            }
-            leftContent={null}
-            rightTitle={null}
-          />
-        </>
-      );
-    }
+              <ThemeSelection />
+              <Spacer px={12} />
+
+              <DeleteAccount />
+            </div>
+          }
+          leftContent={null}
+          rightTitle={null}
+        />
+      </>
+    );
   } else {
-    return <div></div>;
+    return sessioned;
   }
 }

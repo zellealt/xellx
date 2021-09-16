@@ -4,32 +4,44 @@ import ManageGuildLayer from "@/original/Server/AuditLog/Layer";
 import discordGuild from "@/interfaces/discordGuild";
 import fetch_manageable_guild from "@/lib/fetch_manageable_guild";
 import Title from "@/modules/Meta/Title";
+import Unauthorized from "@/original/Error/Unauthorized";
+import invite_bot_specific_server from "@/lib/invite_bot_specific_server";
+import check_session from "@/lib/check_session";
 
-export default function ManageServer(props: { guild: discordGuild }) {
+export default function ManageServer(props: {
+  guild: discordGuild;
+  id: number;
+}) {
   const [session, loading] = useSession();
-
-  if (props.guild === null) {
-    return <h1>placeholder: no permission</h1>;
-  }
 
   useEffect(() => {
     sessionStorage.clear();
   });
 
-  if (!loading) {
-    if (session) {
-      return (
-        <>
-          <Title title={"Managing " + props.guild.name} />
+  if (props.guild === null) {
+    return <Unauthorized />;
+  }
 
-          <ManageGuildLayer guild={props.guild} />
-        </>
-      );
-    } else {
-      return <div></div>;
-    }
-  } else {
+  // @ts-ignore
+  if (props.guild === false) {
+    useEffect(() => {
+      invite_bot_specific_server(props.id);
+    }, []);
     return <div></div>;
+  }
+
+  const sessioned = check_session(session, loading, false);
+
+  if (sessioned === true) {
+    return (
+      <>
+        <Title title={"Managing " + props.guild.name} />
+
+        <ManageGuildLayer guild={props.guild} />
+      </>
+    );
+  } else {
+    return sessioned;
   }
 }
 
@@ -41,7 +53,7 @@ export const getServerSideProps = async (
     const { id } = ctx.query;
     const guild = await fetch_manageable_guild(id, session.user.accessToken);
 
-    return { props: { guild } };
+    return { props: { guild, id } };
   } else {
     return { props: {} };
   }

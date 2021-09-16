@@ -61,7 +61,7 @@ model na_sessions {
   id            Int       @id
   user_id       Int       @unique
   expires       DateTime?
-  refresh_token String    @unique
+  session_token String    @unique
   access_token  String    @unique
   created_at    DateTime?
   updated_at    DateTime?
@@ -71,7 +71,7 @@ model na_users {
   id             Int       @id
   name           String
   email          String
-  email_verified DateTime
+  email_verified DateTime?
   image          String
   created_at     DateTime?
   updated_at     DateTime?

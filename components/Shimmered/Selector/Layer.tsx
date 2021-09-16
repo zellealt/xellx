@@ -1,7 +1,7 @@
 import PageHeader from "@/original/Layout/PageHeader";
 import ServerCardsShimmerLayout from "./CardsLayout";
 
-function ShimmeredLayer3() {
+function ShimmeredLayer4() {
   return (
     <PageHeader
       padding={true}
@@ -23,4 +23,4 @@ function ShimmeredLayer3() {
   );
 }
 
-export default ShimmeredLayer3;
+export default ShimmeredLayer4;

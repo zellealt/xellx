@@ -19,6 +19,8 @@ export default async function remove_account(
   // @ts-ignore
   const session: any = await getSession({ req });
 
+  console.log(session?.user.id.toString());
+
   const query = await prisma.na_accounts.findUnique({
     where: {
       provider_account_id: session?.user.id.toString(),
@@ -27,29 +29,37 @@ export default async function remove_account(
 
   const id = query?.["id"];
 
-  const delete_account = await prisma.na_accounts.delete({
-    where: {
-      id: id,
-    },
-  });
+  try {
+    const delete_account = await prisma.na_accounts.delete({
+      where: {
+        id: id,
+      },
+    });
+  } catch (e) {}
 
-  const delete_session = await prisma.na_sessions.delete({
-    where: {
-      id: id,
-    },
-  });
+  try {
+    const delete_session = await prisma.na_sessions.delete({
+      where: {
+        id: id,
+      },
+    });
+  } catch (e) {}
 
-  const delete_user = await prisma.na_users.delete({
-    where: {
-      id: id,
-    },
-  });
+  try {
+    const delete_user = await prisma.na_users.delete({
+      where: {
+        id: id,
+      },
+    });
+  } catch (e) {}
 
-  const delete_verify_req = await prisma.na_verification_requests.delete({
-    where: {
-      id: id,
-    },
-  });
+  try {
+    const delete_verify_req = await prisma.na_verification_requests.delete({
+      where: {
+        id: id,
+      },
+    });
+  } catch (e) {}
 
   if (query === null) {
     return res.status(406).json({

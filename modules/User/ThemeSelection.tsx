@@ -48,8 +48,6 @@ class ThemeSelection extends React.Component<
       !("theme" in localStorage) &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
-      console.log("cat");
-
       this.setState({
         theme: Themes[0],
       });
@@ -60,8 +58,6 @@ class ThemeSelection extends React.Component<
       !("theme" in localStorage) &&
       window.matchMedia("(prefers-color-scheme: light)").matches
     ) {
-      console.log("cat");
-
       this.setState({
         theme: Themes[0],
       });
@@ -82,7 +78,6 @@ class ThemeSelection extends React.Component<
   componentDidUpdate(prevProps: any, prevState: any) {
     if (prevState.theme !== this.state.theme) {
       if (this.state.theme.id == "0") {
-        console.log("removed");
         localStorage.removeItem("theme");
       } else {
         localStorage.theme = this.state.theme.id;

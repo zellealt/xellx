@@ -9,7 +9,9 @@ import { useSession } from "next-auth/client";
 import router from "next/router";
 import { Transition } from "@headlessui/react";
 import make_request from "@/lib/make_request";
-
+function eraseCookie(name: string) {
+  document.cookie = name + "=; Max-Age=0";
+}
 const DeleteAccount = () => {
   const ref = React.createRef();
   const [open, setOpen] = useState(false);
@@ -22,7 +24,8 @@ const DeleteAccount = () => {
         Authorization: session?.user.accessToken,
       })
         .then(function (response) {
-          if (response.status !== 200) {
+          console.log(response.status);
+          if (response.status !== "green") {
             console.log(
               "Looks like there was a problem. Status Code: " + response.status
             );
@@ -30,12 +33,17 @@ const DeleteAccount = () => {
           }
 
           setTimeout(function () {
-            response.json().then(function () {
-              router.push({
-                pathname: "https://xe.co.vu",
-              });
+            eraseCookie("next-auth.callback-url");
+            eraseCookie("next-auth.csrf-token");
+            eraseCookie("next-auth.session-token");
+
+            localStorage.clear();
+            sessionStorage.clear();
+
+            router.push({
+              pathname: "/",
             });
-          }, 5000);
+          }, 1);
         })
         .catch(function (err) {
           console.log("Fetch Error :-S", err);
@@ -81,7 +89,7 @@ const DeleteAccount = () => {
           leaveTo="opacity-0"
         >
           <div className="dark:bg-gray-900 bg-white opacity-75 dark:opacity-75 z-50 fixed w-full h-full top-0 left-0 flex justify-center place-items-center">
-            <div className="bg-gray-800 flex justify-center place-items-center py-5 px-10 rounded-2xl shadow-2xl">
+            <div className="bg-white dark:bg-gray-800 flex justify-center place-items-center py-5 px-10 rounded-2xl shadow-2xl">
               <Spinner />
               <h1 className="mt-2 ml-10 font-semibold">Deleting Account</h1>
             </div>
