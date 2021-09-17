@@ -18,6 +18,20 @@ module.exports = {
       'text-gray-900',
       'text-indigo-500',
 
+      
+      'bg-green-400',
+      'bg-green-500',
+      'bg-yellow-400',
+      'bg-yellow-500',
+      'bg-yellow-600',
+      'bg-yellow-700',
+      'bg-red-400',
+      'bg-red-500',
+      'bg-blue-400',
+      'bg-blue-500',
+      'bg-gray-900',
+      'bg-indigo-500',
+
     ]
   },
   darkMode: 'class', // or 'media' or 'class'
