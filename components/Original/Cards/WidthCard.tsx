@@ -8,7 +8,7 @@ const WidthCard = (props: CardProps) => {
     <div className="overflow-hidden rounded-lg border dark:border-gray-800 w-full">
       <div className="px-6 py-4">
         <h4
-          className={`mb-3 text-xl font-semibold tracking-tight text-${
+          className={`mb-3 text-xl font-semibold tracking-tight ${
             props.name.color
           } ${
             props.name.color === "gray-900" ? "dark:text-gray-100" : ""
