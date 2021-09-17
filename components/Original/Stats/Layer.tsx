@@ -51,17 +51,16 @@ export default function StatsSkeletonLayer(props: {
             <Seperator />
             {props.statusJson.components.map((item: any) => {
               let color;
-              if (item.status === "operational") color = "text-green-400";
-              if (item.status === "degraded_performance")
-                color = "text-yellow-400";
-              if (item.status === "partial_outage") color = "text-yellow-700";
-              if (item.status === "major_outage") color = "text-red-400";
-              if (item.status === "under_maintenance") color = "text-blue-400";
+              if (item.status === "operational") color = "green-400";
+              if (item.status === "degraded_performance") color = "yellow-400";
+              if (item.status === "partial_outage") color = "yellow-700";
+              if (item.status === "major_outage") color = "red-400";
+              if (item.status === "under_maintenance") color = "blue-400";
               const status = {
                 content: formatStatus(item.status),
                 color: color,
               };
-              const name = { content: item.name, color: "text-gray-900" };
+              const name = { content: item.name, color: "gray-900" };
               return (
                 <div key={item.name}>
                   <WidthCard name={name} content={status} />
