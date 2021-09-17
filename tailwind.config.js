@@ -5,7 +5,73 @@ module.exports = {
   purge: {
     content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './shimmeredModules/**/*.{js,ts,jsx,tsx}', './modules/**/*.{js,ts,jsx,tsx}', './promotional/**/*.{js,ts,jsx,tsx}'],
     safelist: [
-      '\w*-colors-\w*',
+      'text-green-400',
+      'text-green-500',
+      'text-yellow-400',
+      'text-yellow-500',
+      'text-yellow-600',
+      'text-yellow-700',
+      'text-red-400',
+      'text-red-500',
+      'text-blue-400',
+      'text-blue-500',
+      'text-gray-900',
+      'text-indigo-500',
+
+
+      'text-purple-100',
+      'text-indigo-100',
+      'text-blue-100',
+      'text-green-100',
+      'text-yellow-100',
+      'text-red-100',
+      'text-gray-100',
+      'text-pink-100',
+
+      'ring-purple-500',
+      'ring-indigo-500',
+      'ring-blue-500',
+      'ring-green-500',
+      'ring-yellow-500',
+      'ring-red-500',
+      'ring-gray-500',
+      'ring-pink-500',
+      
+
+      'bg-purple-700',
+      'bg-indigo-700',
+      'bg-blue-700',
+      'bg-green-700',
+      'bg-yellow-700',
+      'bg-red-700',
+      'bg-gray-700',
+      'bg-pink-700',
+
+      'checked:bg-purple-500',
+      'checked:bg-indigo-500',
+      'checked:bg-blue-500',
+      'checked:bg-green-500',
+      'checked:bg-yellow-500',
+      'checked:bg-red-500',
+      'checked:bg-gray-500',
+      'checked:bg-pink-500',
+
+      'md:w-1/4',
+      'md:w-2/4',
+      'w-24',
+      'w-16',
+      'w-40',
+      'w-20',
+      'h-10',
+      'w-7',
+      'w-1/12',
+      'w-44',
+      'w-40',
+      'w-36',
+      'w-32',
+      'h-7',
+      'h-6',
+      'rounded-sm',
 
       'bg-green-400',
       'bg-green-500',
@@ -20,10 +86,7 @@ module.exports = {
       'bg-gray-900',
       'bg-indigo-500',
 
-    ],
-    options: {
-      whitelistPatterns: [/w-+/g]
-    }
+    ]
   },
   darkMode: 'class', // or 'media' or 'class'
   theme: {

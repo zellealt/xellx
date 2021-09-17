@@ -69,13 +69,13 @@ const options = {
 
   database: {
     type: "postgres",
-    host: process.env.IP,
-    port: process.env.PORT,
-    username: process.env.USERNAME,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
+    host: "localhost",
+    port: 5432,
+    username: "postgres",
+    password: "StarShake11",
+    database: "zel_bot",
     entityPrefix: "na_",
-    synchronize: false,
+    synchronize: true,
   },
 };
 
