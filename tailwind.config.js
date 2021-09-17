@@ -5,10 +5,25 @@ module.exports = {
   purge: {
     content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './shimmeredModules/**/*.{js,ts,jsx,tsx}', './modules/**/*.{js,ts,jsx,tsx}', './promotional/**/*.{js,ts,jsx,tsx}'],
     safelist: [
-      '[a-zA-Z]+-[a-zA-Z]+([+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*))(?:[eE]([+-]?\d+))?',
+      '\w*-colors-\w*',
+
       'md:w-1/4',
       'md:w-2/4',
       'w-1/12',
+
+
+      'bg-green-400',
+      'bg-green-500',
+      'bg-yellow-400',
+      'bg-yellow-500',
+      'bg-yellow-600',
+      'bg-yellow-700',
+      'bg-red-400',
+      'bg-red-500',
+      'bg-blue-400',
+      'bg-blue-500',
+      'bg-gray-900',
+      'bg-indigo-500',
 
     ]
   },
