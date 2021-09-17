@@ -3,9 +3,12 @@ const Shimmer = (props: {
   width: number | string;
   rounded: string;
 }) => {
+  const height = "h-" + props.height;
+  const width = "w-" + props.width;
+  const rounded = "rounded-" + props.rounded;
   return (
     <div
-      className={`h-${props.height} w-${props.width} rounded-${props.rounded} bg-gray-200 dark:bg-gray-700 animate-pulse`}
+      className={`${height} ${width} ${rounded} bg-gray-200 dark:bg-gray-700 animate-pulse`}
     ></div>
   );
 };
