@@ -7,11 +7,6 @@ module.exports = {
     safelist: [
       '\w*-colors-\w*',
 
-      'md:w-1/4',
-      'md:w-2/4',
-      'w-1/12',
-
-
       'bg-green-400',
       'bg-green-500',
       'bg-yellow-400',
@@ -25,7 +20,10 @@ module.exports = {
       'bg-gray-900',
       'bg-indigo-500',
 
-    ]
+    ],
+    options: {
+      whitelistPatterns: [/w-+/g]
+    }
   },
   darkMode: 'class', // or 'media' or 'class'
   theme: {
