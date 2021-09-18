@@ -23,7 +23,7 @@ export default function Index() {
   } else {
     return (
       <div>
-        <Title title="Xellx Bot" />
+        <Title title="Bot" />
         <Header />
         <Hero />
       </div>
