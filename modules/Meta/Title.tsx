@@ -4,7 +4,7 @@ import React from "react";
 const Title = (props: { title: string }) => {
   return (
     <Head>
-      <title>{props.title}</title>
+      <title>{props.title} • Xellx</title>
     </Head>
   );
 };
