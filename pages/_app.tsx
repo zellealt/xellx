@@ -89,6 +89,10 @@ class MyApp extends App {
         this.setState({ isSettingsLoading: true, loading: true });
       } else if (page.includes("server") && page.includes("auditlog")) {
         this.setState({ isAuditLogLoading: true, loading: true });
+      } else if (page.includes("home")) {
+        return;
+      } else if (page.includes("commands")) {
+        return;
       } else {
         this.setState({ isHomeLoading: true, loading: true });
       }

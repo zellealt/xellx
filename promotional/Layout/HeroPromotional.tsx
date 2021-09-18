@@ -4,7 +4,7 @@ import Right from "./Hero/Right";
 const Hero = () => {
   return (
     <div className="lg:grid lg:grid-cols-2">
-      <div className="lg:flex lg:h-screen pt-5 lg:pt-0 -mt-16">
+      <div className="lg:flex lg:h-screen pt-5 lg:pt-0 -mt-16 -z-1">
         <Left />
       </div>
       <div>

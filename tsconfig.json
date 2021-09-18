@@ -57,7 +57,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "generals/timeSince.js"  ],
+, "generals/timeSince.js", "components/Original/Tooltips/Tooltip.js"  ],
   "exclude": [
     "node_modules"
   ]

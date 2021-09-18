@@ -1,0 +1,38 @@
+[
+  {
+    "friendlyName": "Ban",
+    "command": "ban",
+    "description": "Bans the specified user",
+    "fields": [
+      {
+        "type": "user",
+        "optional": false
+      }
+    ],
+    "category": "Moderation"
+  },
+  {
+    "friendlyName": "Kick",
+    "command": "kick",
+    "description": "Kicks the specified user",
+    "fields": [
+      {
+        "type": "user",
+        "optional": false
+      }
+    ],
+    "category": "Moderation"
+  },
+  {
+    "friendlyName": "More is coming soon",
+    "command": "xellx",
+    "description": "This is not complete",
+    "fields": [
+      {
+        "type": "xel",
+        "optional": true
+      }
+    ],
+    "category": "Other"
+  }
+]

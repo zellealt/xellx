@@ -12,19 +12,19 @@ const DesktopNavigation = () => {
   const router = useRouter();
   return (
     <div className="hidden md:block">
-      <div className="ml-10 flex items-baseline space-x-4">
+      <div className="ml-10 flex items-baseline space-x-4 z-50">
         {navigation.map((item) => (
           <Link key={item.href} href={item.href}>
             <a
               key={item.name}
               className={classNames(
-                router.pathname.includes(item.href.toLowerCase())
+                router.pathname.includes(item.includes.toLowerCase())
                   ? "bg-gray-100 dark:bg-gray-800"
                   : "hover:bg-gray-50 dark:hover:bg-gray-700",
                 "text-black dark:text-white px-3 py-2 text-sm font-medium transition rounded-md"
               )}
               aria-current={
-                router.pathname.includes(item.href.toLowerCase())
+                router.pathname.includes(item.includes.toLowerCase())
                   ? "page"
                   : undefined
               }

@@ -19,13 +19,14 @@ export default function Index() {
       });
     });
 
-    return <Title title="Redirecting" />;
+    return <Title title="Dashboard" />;
   } else {
-    useEffect(() => {
-      router.push({
-        pathname: "/home",
-      });
-    });
-    return <Title title="Redirecting" />;
+    return (
+      <div>
+        <Title title="Xellx Bot" />
+        <Header />
+        <Hero />
+      </div>
+    );
   }
 }

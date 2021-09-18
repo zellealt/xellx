@@ -1,6 +1,12 @@
 import chalk from "chalk";
 
-const make_request = async (query: string, headers: any) => {
+const make_request = async (query: string, rawHeaders?: any) => {
+  let headers = rawHeaders;
+
+  if (rawHeaders == undefined) {
+    headers = {};
+  }
+
   const url = query;
 
   const res = await fetch(url, {
