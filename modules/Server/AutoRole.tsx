@@ -114,9 +114,7 @@ class AutoRole extends React.Component<
 
         const role_id = this.state.selected.id;
         const jsonRes = await make_request(
-          `
-          http://localhost:4000/api/${this.props.guild.id}/update/auto_role?data=${role_id}
-        `,
+          `${process.env.APP_URI}/api/${this.props.guild.id}/update/auto_role?data=${role_id}`,
           {
             Authorization: session.user.accessToken,
           }

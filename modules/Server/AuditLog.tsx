@@ -151,9 +151,7 @@ class AuditLog extends React.Component<
         });
 
         const jsonRes = await make_request(
-          `
-          http://localhost:4000/api/${this.props.guild.id}/${api}/sticky_role?data=${role_id}
-        `,
+          `${process.env.APP_URI}/api/${this.props.guild.id}/${api}/sticky_role?data=${role_id}`,
           {
             Authorization: session.user.accessToken,
           }
