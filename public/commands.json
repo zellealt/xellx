@@ -2,7 +2,7 @@
   {
     "friendlyName": "Ban",
     "command": "ban",
-    "description": "Bans the specified user",
+    "description": "Bans the user specified",
     "fields": [
       {
         "type": "user",
@@ -14,7 +14,7 @@
   {
     "friendlyName": "Kick",
     "command": "kick",
-    "description": "Kicks the specified user",
+    "description": "Kicks the user specified",
     "fields": [
       {
         "type": "user",
@@ -24,15 +24,27 @@
     "category": "Moderation"
   },
   {
-    "friendlyName": "More is coming soon",
-    "command": "xellx",
-    "description": "This is not complete",
+    "friendlyName": "Warn",
+    "command": "warn",
+    "description": "Warns the user specified",
     "fields": [
       {
-        "type": "xel",
+        "type": "user",
+        "optional": false
+      }
+    ],
+    "category": "Moderation"
+  },
+  {
+    "friendlyName": "Info",
+    "command": "info",
+    "description": "Shows information about user specified",
+    "fields": [
+      {
+        "type": "user",
         "optional": true
       }
     ],
-    "category": "Other"
+    "category": "General"
   }
 ]
