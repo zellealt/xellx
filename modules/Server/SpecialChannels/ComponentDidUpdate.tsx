@@ -1,6 +1,6 @@
 import make_request from "@/lib/make_request";
 import Loader from "@/modules/Layout/Loader";
-import NewSnackbar from "@/modules/Layout/Snackbar";
+import NewSnackbar from "@/modules/Layout/XellxSnackbar";
 import React from "react";
 
 async function ComponentDidUpdate(that: any, prevState: any) {

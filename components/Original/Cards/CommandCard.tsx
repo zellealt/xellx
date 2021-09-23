@@ -12,7 +12,7 @@ import PeopleRoundedIcon from "@material-ui/icons/PeopleRounded";
 import make_request from "@/lib/make_request";
 import withSession from "@/hooks/withSesssion";
 import Loader from "@/modules/Layout/Loader";
-import NewSnackbar from "@/modules/Layout/Snackbar";
+import NewSnackbar from "@/modules/Layout/XellxSnackbar";
 
 interface CardProps {
   name: string;
