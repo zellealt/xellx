@@ -19,7 +19,7 @@ const ResetServerData = (props: { guild: discordGuild }) => {
   useEffect(() => {
     if (start === true) {
       make_request(
-        `${process.env.APP_URI}/api/${props.guild.id}/remove/server_data`,
+        `${process.env.NEXT_PUBLIC_APP_URI}/api/${props.guild.id}/remove/server_data`,
         {
           Authorization: session?.user.accessToken,
         }

@@ -43,7 +43,7 @@ const AuditLogFullPage = (props: { guild: discordGuild }) => {
                 .map((dataEntry: any) => {
                   return (
                     <Entry
-                      key={dataEntry.key}
+                      key={dataEntry.id}
                       action={dataEntry.action}
                       date={timeSince(new Date(dataEntry.date))}
                       user={dataEntry.user}

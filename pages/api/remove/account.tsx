@@ -64,7 +64,7 @@ export default async function remove_account(
   if (query === null) {
     return res.status(406).json({
       message: "User does not exist in the database",
-      status: "red",
+      status: "error",
     });
   }
 
@@ -72,6 +72,6 @@ export default async function remove_account(
 
   res.status(200).json({
     message: message,
-    status: "green",
+    status: "success",
   });
 }

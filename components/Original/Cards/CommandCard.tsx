@@ -8,9 +8,12 @@ import Commands from "../Modals/Commands";
 import SecurityRounded from "@material-ui/icons/SecurityRounded";
 import CalendarTodayRoundedIcon from "@material-ui/icons/CalendarTodayRounded";
 import { useSession } from "next-auth/client";
-import SnackBar from "../../../modules/Layout/SnackBar";
 import PeopleRoundedIcon from "@material-ui/icons/PeopleRounded";
 import make_request from "@/lib/make_request";
+import withSession from "@/hooks/withSesssion";
+import Loader from "@/modules/Layout/Loader";
+import NewSnackbar from "@/modules/Layout/Snackbar";
+
 interface CardProps {
   name: string;
   short_desc: any;
@@ -27,32 +30,12 @@ function timeout(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const withSession = (Component: any) => (props: any) => {
-  const [session, loading] = useSession();
-
-  // if the component has a render property, we are good
-  if (Component.prototype.render) {
-    return <Component session={session} loading={loading} {...props} />;
-  }
-
-  // if the passed component is a function component, there is no need for this wrapper
-  throw new Error(
-    [
-      "You passed a function component, `withSession` is not needed.",
-      "You can `useSession` directly in your component.",
-    ].join("\n")
-  );
-};
-
 class CommandCard extends React.Component<
   CardProps,
   {
     open: boolean;
     data: any;
-    alert: string | boolean;
-    alertStatus: string | null;
-    alertBool: boolean;
-    alertCustomClasses: string;
+    snackbar: any;
     triggerUpdate: boolean;
     beforeUpdate: any;
   }
@@ -63,10 +46,7 @@ class CommandCard extends React.Component<
     this.state = {
       open: false,
       data: false,
-      alert: false,
-      alertStatus: null,
-      alertBool: false,
-      alertCustomClasses: "",
+      snackbar: false,
       triggerUpdate: true,
       beforeUpdate: props.guild.commands,
     };
@@ -114,10 +94,7 @@ class CommandCard extends React.Component<
           return;
         }
         this.setState({
-          alert: "Applying the changes",
-          alertStatus: "blue",
-          alertBool: true,
-          alertCustomClasses: "animate-pulse",
+          snackbar: <Loader />,
         });
         const { session, loading } = this.props;
         let urlString = "";
@@ -145,17 +122,10 @@ class CommandCard extends React.Component<
           newObject[command.id] = command.selected;
         }
         this.setState({
-          alert: jsonRes.message,
-          alertStatus: jsonRes.status,
-          alertBool: true,
-          alertCustomClasses: "",
+          snackbar: (
+            <NewSnackbar message={jsonRes.message} status={jsonRes.status} />
+          ),
           beforeUpdate: newObject,
-        });
-
-        await timeout(4000);
-
-        this.setState({
-          alertBool: false,
         });
       }
     }
@@ -164,31 +134,26 @@ class CommandCard extends React.Component<
   render() {
     const ref = React.createRef();
     let CommandIcon;
+    const classNameIconProps = "h-6 w-6 text-indigo-900";
     if (this.props.name === "Moderation")
       CommandIcon = (
-        <SecurityRounded
-          className="h-6 w-6 text-indigo-900"
-          aria-hidden="true"
-        />
+        <SecurityRounded className={classNameIconProps} aria-hidden="true" />
       );
     if (this.props.name === "General")
       CommandIcon = (
         <CalendarTodayRoundedIcon
-          className="h-6 w-6 text-indigo-900"
+          className={classNameIconProps}
           aria-hidden="true"
         />
       );
     if (this.props.name === "Sticky Roles")
       CommandIcon = (
-        <PeopleRoundedIcon
-          className="h-6 w-6 text-indigo-900"
-          aria-hidden="true"
-        />
+        <PeopleRoundedIcon className={classNameIconProps} aria-hidden="true" />
       );
     return (
       <div className="w-full h-60 rounded-lg border relative dark:border-gray-800">
         <div className="px-6 py-4">
-          <div className="m-auto mb-3 flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 sm:h-10 sm:w-10">
+          <div className="m-auto mb-3 flex items-center justify-center h-12 w-12 rounded-full bg-indigo-300 sm:h-10 sm:w-10">
             {CommandIcon}
           </div>
           <h4 className="text-xl text-center font-semibold tracking-tight dark:text-gray-100 text-gray-800 flex flex-row justify-center">
@@ -241,12 +206,7 @@ class CommandCard extends React.Component<
             ]}
           />
         </div>
-        <SnackBar
-          customClasses={this.state.alertCustomClasses}
-          alert={this.state.alert}
-          alertBool={this.state.alertBool}
-          alertStatus={this.state.alertStatus}
-        />
+        {this.state.snackbar && this.state.snackbar}
       </div>
     );
   }

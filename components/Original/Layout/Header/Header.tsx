@@ -24,7 +24,9 @@ function Header() {
   const ref = React.createRef();
 
   if (!loading) {
+    console.log("loaded");
     if (session) {
+      console.log("sessioned");
       return (
         <div>
           <Disclosure as="nav" className="bg-gray-100 dark:bg-gray-700 z-50">

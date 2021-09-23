@@ -1,6 +1,6 @@
 import React from "react";
 import discordGuild from "@/interfaces/discordGuild";
-import AuditLogX from "@/modules/Server/AuditLogX";
+import AuditLogX from "@/modules/Server/AuditLog/AuditLog";
 import Card, { EmptyCard } from "@/original/Cards/Card";
 import router from "next/router";
 import OpenInBrowserRoundedIcon from "@material-ui/icons/OpenInBrowserRounded";

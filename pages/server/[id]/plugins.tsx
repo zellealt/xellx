@@ -15,7 +15,7 @@ export default function ManageServer(props: {
   const [session, loading] = useSession();
 
   useEffect(() => {
-    sessionStorage.clear();
+    window.localStorage.clear();
   });
 
   // @ts-ignore

@@ -1,10 +1,11 @@
-import check_if_channel_in_guild from "@/lib/check_if_channel_in_guild";
+import check_if_role_in_guild from "@/lib/check_if_role_in_guild";
 import can_manage_guild from "@/lib/can_manage_guild";
 import prisma from "@/lib/prisma";
 import make_log from "@/lib/make_log";
 import { getSession } from "next-auth/client";
+import get_guild_roles from "@/lib/get_guild_roles";
 
-export default async function update_audit_log_channel(
+export default async function get_roles(
   req: { query: { id: any; data: any }; headers: { authorization: any } },
   res: {
     status: (arg0: number) => {
@@ -31,7 +32,6 @@ export default async function update_audit_log_channel(
       status: "error",
     });
   }
-
   const queryJson = JSON.parse(
     JSON.stringify(query, (key, value) =>
       typeof value === "bigint" ? value.toString() : value
@@ -53,51 +53,7 @@ export default async function update_audit_log_channel(
       .json({ message: "You are being rate limited", status: "error" });
   }
 
-  // alright now update the stuff
+  const roles = await get_guild_roles(id);
 
-  let is_channel_in_guild = await check_if_channel_in_guild(
-    BigInt(id),
-    BigInt(data)
-  );
-
-  if (!is_channel_in_guild) {
-    if (BigInt(data) !== BigInt(0)) {
-      return res
-        .status(401)
-        .json({
-          message: "Specified channel is not in guild",
-          status: "error",
-        });
-    }
-    is_channel_in_guild = "None";
-  } else {
-    is_channel_in_guild = "#" + is_channel_in_guild;
-  }
-
-  const updateConfig = await prisma.config.update({
-    where: {
-      guild_id: BigInt(id),
-    },
-    data: {
-      // @ts-ignore
-      audit_log_channel: BigInt(data),
-    },
-  });
-
-  const message = `Updated the channel to ${is_channel_in_guild}`;
-
-  // @ts-ignore
-  const session = await getSession({ req });
-
-  await make_log(
-    message,
-    // @ts-ignore
-    session?.user?.name + "#" + session?.user?.discriminator,
-    BigInt(id)
-  );
-
-  res.status(200).json({
-    message,
-    status: "success",
-  });
+  res.status(200).json(roles);
 }

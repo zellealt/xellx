@@ -1,11 +1,11 @@
 interface PageHeaderProps {
-  leftContent: any | null;
-  rightContent: any | null;
-  rightTitle: string | null;
-  leftTitle: string | null;
-  content: any;
-  padding: boolean;
-  fullWidth: boolean;
+  leftContent?: any | null;
+  rightContent?: any | null;
+  rightTitle?: string | null;
+  leftTitle?: string | null;
+  content?: any;
+  padding?: boolean;
+  fullWidth?: boolean;
 }
 
 const PageHeader = (props: PageHeaderProps) => {

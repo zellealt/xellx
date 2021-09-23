@@ -3,9 +3,9 @@ import CustomCard from "@/original/Cards/CustomCard";
 import discordGuild from "@/interfaces/discordGuild";
 import pluginData from "@/interfaces/pluginData";
 import React from "react";
-import StickyRoles from "@/modules/Server/StickyRoles";
-import SpecialChannels from "@/modules/Server/SpecialChannels";
-import AutoRole from "@/modules/Server/AutoRole";
+import StickyRoles from "@/modules/Server/StickyRoles/StickyRoles";
+import SpecialChannels from "@/modules/Server/SpecialChannels/SpecialChannels";
+import AutoRole from "@/modules/Server/AutoRole/AutoRole";
 
 class DashBoardGrid extends React.Component<
   { guild: discordGuild },

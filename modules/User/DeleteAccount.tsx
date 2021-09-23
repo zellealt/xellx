@@ -20,7 +20,7 @@ const DeleteAccount = () => {
 
   useEffect(() => {
     if (start === true) {
-      make_request(`${process.env.APP_URI}/api/remove/account`, {
+      make_request(`${process.env.NEXT_PUBLIC_APP_URI}/api/remove/account`, {
         Authorization: session?.user.accessToken,
       })
         .then(function (response) {

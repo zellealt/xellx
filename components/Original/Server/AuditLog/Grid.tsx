@@ -1,6 +1,6 @@
 import discordGuild from "@/interfaces/discordGuild";
 import React from "react";
-import AuditLogX from "@/modules/Server/AuditLogFullPage";
+import AuditLogX from "@/modules/Server/AuditLog/AuditLogFullPage";
 
 class DashBoardGrid extends React.Component<{ guild: discordGuild }> {
   render() {

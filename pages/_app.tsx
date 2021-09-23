@@ -1,7 +1,7 @@
 import App from "next/app";
 import "tailwindcss/tailwind.css";
 import "../styles/globals.css";
-import { Provider } from "next-auth/client";
+import { Provider as AuthProvider } from "next-auth/client";
 import Header from "@/original/Layout/Header/Header";
 import Router from "next/router";
 import OverviewSkeletonLayer from "@/shimmered/Server/Overview/Layer";
@@ -141,10 +141,11 @@ class MyApp extends App {
       <Fragment>
         <LoadingBar color="#7c48e5" progress={this.state.loading ? 30 : 100} />
 
-        <Provider session={pageProps.session}>
+        <AuthProvider session={pageProps.session}>
           <Header />
           {loading || <Component {...pageProps} />}
-        </Provider>
+        </AuthProvider>
+
         {isHomeLoading && <SelectorSkeletonLayer />}
         {isOverviewLoading && <OverviewSkeletonLayer />}
         {isPluginsLoading && <PluginsSkeletonLayer />}

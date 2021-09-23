@@ -27,14 +27,14 @@ export default async function remove_sticky_role(
   if (query === null) {
     return res.status(406).json({
       message: "Server or user does not exist in the database",
-      status: "red",
+      status: "error",
     });
   }
 
   if (!query["sticky_roles"].includes(BigInt(data))) {
     return res.status(406).json({
       message: "Sticky role does not exist in the database",
-      status: "yellow",
+      status: "warning",
     });
   }
 
@@ -49,14 +49,14 @@ export default async function remove_sticky_role(
   if (guild === false) {
     return res.status(401).json({
       message: "You lack permission to edit this server",
-      status: "red",
+      status: "error",
     });
   }
 
   if (guild === "rate_limited") {
     return res
       .status(401)
-      .json({ message: "You are being rate limited", status: "red" });
+      .json({ message: "You are being rate limited", status: "error" });
   }
 
   // alright now update the stuff
@@ -69,7 +69,7 @@ export default async function remove_sticky_role(
     if (BigInt(data) !== BigInt(0)) {
       return res
         .status(401)
-        .json({ message: "Specified role is not in guild", status: "red" });
+        .json({ message: "Specified role is not in guild", status: "error" });
     }
     is_role_in_guild = "None";
   } else {
@@ -104,6 +104,6 @@ export default async function remove_sticky_role(
 
   res.status(200).json({
     message: message,
-    status: "green",
+    status: "success",
   });
 }

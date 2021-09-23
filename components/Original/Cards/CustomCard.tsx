@@ -5,7 +5,6 @@ import discordGuild from "@/interfaces/discordGuild";
 import Modal from "@/modules/Modals/Modal";
 import Custom from "@/original/Modals/Custom";
 import { useSession } from "next-auth/client";
-import SnackBar from "@/modules/Layout/SnackBar";
 import PeopleRoundedIcon from "@material-ui/icons/PeopleRounded";
 import FolderSpecialRoundedIcon from "@material-ui/icons/FolderSpecialRounded";
 import AddCircleRoundedIcon from "@material-ui/icons/AddCircleRounded";
@@ -38,10 +37,6 @@ class CustomCard extends React.Component<
   CardProps,
   {
     open: boolean;
-    alert: string | boolean;
-    alertStatus: string | null;
-    alertBool: boolean;
-    alertCustomClasses: string;
   }
 > {
   constructor(props: any) {
@@ -49,41 +44,35 @@ class CustomCard extends React.Component<
 
     this.state = {
       open: false,
-      alert: false,
-      alertStatus: null,
-      alertBool: false,
-      alertCustomClasses: "",
     };
   }
 
   render() {
     const ref = React.createRef();
     let CommandIcon;
+    const classNameIconProps = "h-6 w-6 text-indigo-900";
     if (this.props.name === "Sticky Roles")
       CommandIcon = (
-        <PeopleRoundedIcon
-          className="h-6 w-6 text-indigo-900"
-          aria-hidden="true"
-        />
+        <PeopleRoundedIcon className={classNameIconProps} aria-hidden="true" />
       );
     if (this.props.name === "Special Channels")
       CommandIcon = (
         <FolderSpecialRoundedIcon
-          className="h-6 w-6 text-indigo-900"
+          className={classNameIconProps}
           aria-hidden="true"
         />
       );
     if (this.props.name === "Auto Role")
       CommandIcon = (
         <AddCircleRoundedIcon
-          className="h-6 w-6 text-indigo-900"
+          className={classNameIconProps}
           aria-hidden="true"
         />
       );
     return (
       <div className="w-full h-60 rounded-lg border dark:border-gray-800 relative">
         <div className="px-6 py-4">
-          <div className="m-auto mb-3 flex items-center justify-center h-12 w-12 rounded-full bg-indigo-100 sm:h-10 sm:w-10">
+          <div className="m-auto mb-3 flex items-center justify-center h-12 w-12 rounded-full bg-indigo-300 sm:h-10 sm:w-10">
             {CommandIcon}
           </div>
           <h4 className="text-xl text-center font-semibold tracking-tight dark:text-gray-100 text-gray-800 flex flex-row justify-center">
@@ -126,12 +115,6 @@ class CustomCard extends React.Component<
             ]}
           />
         </div>
-        <SnackBar
-          customClasses={this.state.alertCustomClasses}
-          alert={this.state.alert}
-          alertBool={this.state.alertBool}
-          alertStatus={this.state.alertStatus}
-        />
       </div>
     );
   }

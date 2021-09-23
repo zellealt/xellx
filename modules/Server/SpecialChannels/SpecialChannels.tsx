@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import discordGuild from "@/interfaces/discordGuild";
-import Channel from "./SpecialChannels/Channel";
+import Channel from "./Channel";
 
 const SpeicalChannels = (props: { guild: discordGuild }) => {
   const [shimmer, setShimmer] = useState(true);

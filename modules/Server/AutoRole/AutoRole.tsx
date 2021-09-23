@@ -1,38 +1,21 @@
-import React, { Component, useState } from "react";
-import Select from "../../../components/Original/Forms/Select";
-import { useSession } from "next-auth/client";
-import SpecialChannelsShimmer from "@/shimmeredModules/Server/SpecialChannels";
-import config from "../../../interfaces/config";
-import make_request from "@/lib/make_request";
+import React from "react";
+import discordGuild from "@/interfaces/discordGuild";
+import Select from "@/original/Forms/Select";
+import AutoRoleShimmer from "@/shimmeredModules/Server/AutoRole";
+import withSession from "@/hooks/withSesssion";
 import ComponentDidUpdateMethod from "./ComponentDidUpdate";
 import ComponentWillUnmountMethod from "./ComponentWillUnmount";
 import ComponentDidMountMethod from "./ComponentDidMount";
 import GetDerivedStateFromPropsMethod from "./GetDerivedStateFromProps";
-import withSession from "@/hooks/withSesssion";
 
-interface discordGuild {
-  id: number;
-  icon: string;
-  name: string;
-  channels: any;
-  config: config;
-}
-
-interface SpecialChannelsProps {
+interface AutoRoleProps {
   guild: discordGuild;
   session: any;
   loading: any;
-  friendlyName: string;
-  id: any;
-  setShimmer: any;
 }
 
-function timeout(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-class SpecialChannel extends React.Component<
-  SpecialChannelsProps,
+class AutoRole extends React.Component<
+  AutoRoleProps,
   {
     selected: any;
     triggerUpdate: boolean;
@@ -63,8 +46,8 @@ class SpecialChannel extends React.Component<
     return await ComponentDidUpdateMethod(this, prevState);
   }
 
-  static async getDerivedStateFromProps(props: SpecialChannelsProps) {
-    return await GetDerivedStateFromPropsMethod(props);
+  static getDerivedStateFromProps(props: AutoRoleProps) {
+    return GetDerivedStateFromPropsMethod(props);
   }
 
   updateState(state: any) {
@@ -75,10 +58,10 @@ class SpecialChannel extends React.Component<
 
   render() {
     return this.state.selected ? (
-      <div>
+      <div className="flex justify-center place-items-center">
         <Select
-          name={this.props.friendlyName}
-          data={this.props.guild.channels}
+          name=""
+          data={this.props.guild.roles}
           selected={this.state.selected}
           setSelected={this.updateState}
         />
@@ -86,11 +69,11 @@ class SpecialChannel extends React.Component<
         {this.state.snackbar && this.state.snackbar}
       </div>
     ) : (
-      <SpecialChannelsShimmer />
+      <AutoRoleShimmer />
     );
   }
 }
 
-const ClassComponentWithSession = withSession(SpecialChannel);
+const ClassComponentWithSession = withSession(AutoRole);
 
 export default ClassComponentWithSession;
