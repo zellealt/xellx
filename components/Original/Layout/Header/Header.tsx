@@ -29,7 +29,7 @@ function Header() {
       console.log("sessioned");
       return (
         <div>
-          <Disclosure as="nav" className="bg-gray-100 dark:bg-gray-700 z-50">
+          <Disclosure as="nav" className="bg-gray-100 dark:bg-gray-700 z-40">
             {({ open }) => (
               <>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +44,7 @@ function Header() {
                     <div className="hidden md:block">
                       <div className="ml-4 flex items-center md:ml-6">
                         {/* Profile dropdown */}
-                        <Menu as="div" className="ml-3 relative z-50">
+                        <Menu as="div" className="ml-3 relative z-10">
                           {({ open }) => (
                             <>
                               <div>
@@ -60,7 +60,7 @@ function Header() {
                                 </Menu.Button>
                               </div>
                               <Portal className="profile-dropdown">
-                                <div className="top-12 right-7 navl:ml-380 navl:inset-x-1/2 navl:items-center absolute z-50">
+                                <div className="top-12 right-7 navl:ml-380 navl:inset-x-1/2 navl:items-center absolute z-40">
                                   <Transition
                                     show={open}
                                     as={Fragment}
@@ -73,7 +73,7 @@ function Header() {
                                   >
                                     <Menu.Items
                                       static
-                                      className="dark:bg-gray-900 origin-top-right absolute z-50 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                      className="dark:bg-gray-900 origin-top-right absolute z-40 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                                     >
                                       <Menu.Item>
                                         {({ active }) => (
