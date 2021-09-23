@@ -10,7 +10,7 @@ const Cards = (props: { cards: any[] }) => {
           xellxImage={true}
           name={entry.name}
           content={
-            <div className="space-y-10 flex gap-16">
+            <div className="space-y-10 flex gap-16 h-56">
               {entry.categorys.map((category) => (
                 <div key={entry.name}>
                   <h1 className="text-lg font-semibold">{category.name}</h1>
