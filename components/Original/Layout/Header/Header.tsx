@@ -62,7 +62,7 @@ function Header() {
               </div>
 
               <Disclosure.Panel className="md:hidden">
-                <MobileNavigation />
+                <MobileNavigation session={session} />
                 <MobileProfile
                   session={session}
                   setOpen={(value: boolean) => setOpen(value)}

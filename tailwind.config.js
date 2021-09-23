@@ -90,6 +90,9 @@ module.exports = {
   },
   darkMode: 'class', // or 'media' or 'class'
   theme: {
+    flex: {
+      '2': '2 2 0%',
+    },
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],

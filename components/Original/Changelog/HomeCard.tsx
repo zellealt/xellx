@@ -7,7 +7,7 @@ const Cards = (props: { cards: any[] }) => {
       {props.cards.map((entry: { name: any; categorys: any[] }) => (
         <div
           key={entry.name}
-          className="space-y-10 flex gap-16 bg-gray-100 dark:bg-gray-800 p-5 rounded-lg shadow-xl text-center"
+          className="md:flex bg-gray-100 dark:bg-gray-800 p-5 rounded-lg shadow-xl text-center gap-x-10"
         >
           {entry.categorys.map((category) => (
             <div key={entry.name}>

@@ -8,7 +8,7 @@ import V001 from "./Versions/0.0.1";
 
 const Module = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div className="grid lg:grid-cols-2 gap-10 sm:mx-0 mx-3">
       <V003 />
 
       <V002 />

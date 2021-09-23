@@ -13,7 +13,7 @@ const ShimmerdSetLayer1 = () => {
       rightContent={null}
       leftTitle="Settings"
       content={
-        <div>
+        <div className="p-3 sm:p-0">
           <UserCard />
 
           <Spacer px={12} />

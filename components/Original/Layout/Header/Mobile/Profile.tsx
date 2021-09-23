@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React, { ReactChild, ReactFragment, ReactPortal } from "react";
 
-const MobileProfile = (session: any, setOpen: any) => {
-  if (session !== null) {
+const MobileProfile = (props: { session: any; setOpen: any }) => {
+  if (props.session === null) {
     return <div></div>;
   }
   return (
@@ -11,13 +11,13 @@ const MobileProfile = (session: any, setOpen: any) => {
         <div className="flex-shrink-0">
           <img
             className="h-10 w-10 rounded-full"
-            src={session?.user.image}
+            src={props.session?.user.image}
             alt=""
           />
         </div>
         <div className="ml-3">
           <div className="text-base font-medium leading-none">
-            {session?.user.name}
+            {props.session?.user.name}
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@ const MobileProfile = (session: any, setOpen: any) => {
           </div>
         </Link>
         <a
-          onClick={() => setOpen(true)}
+          onClick={() => props.setOpen(true)}
           className="transition block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-200 dark:hover:bg-gray-800"
         >
           Log out
