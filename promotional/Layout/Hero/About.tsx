@@ -15,7 +15,7 @@ const Text = () => {
         <ChipWithLinkText
           link="/changelog"
           chipText="what's new"
-          text="Version 0.0.2 has released"
+          text="Version 0.0.3 has released"
         />
 
         <div className="max-w-lg space-y-5 text-center m-auto">
