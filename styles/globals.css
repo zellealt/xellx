@@ -80,13 +80,13 @@
 
   @keyframes float {
     0% {
-      transform: translateY(calc(-50% + 0px));
+      transform: translateY(calc(0px));
     }
     50% {
-      transform: translateY(calc(-50% + -20px));
+      transform: translateY(calc(-20px));
     }
     100% {
-      transform: translateY(calc(-50% + 0px));
+      transform: translateY(calc(0px));
     }
   }
 

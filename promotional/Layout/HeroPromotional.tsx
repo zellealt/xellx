@@ -1,15 +1,12 @@
-import Left from "./Hero/Left";
-import Right from "./Hero/Right";
+import React from "react";
+import Text from "./Hero/Text";
+import Image from "./Hero/Image";
 
 const Hero = () => {
   return (
-    <div className="lg:grid lg:grid-cols-2">
-      <div className="lg:flex lg:h-screen pt-5 lg:pt-0">
-        <Left />
-      </div>
-      <div>
-        <Right />
-      </div>
+    <div className="space-y-36">
+      <Text />
+      <Image />
     </div>
   );
 };

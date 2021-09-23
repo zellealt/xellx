@@ -24,7 +24,6 @@ export default function Index() {
     return (
       <div>
         <Title title="Bot" />
-        <Header />
         <Hero />
       </div>
     );

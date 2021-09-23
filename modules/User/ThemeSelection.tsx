@@ -1,27 +1,12 @@
 import { useSession } from "next-auth/client";
 import React from "react";
 import Select from "@/original/Forms/DropdownSelect";
-
-const withSession = (Component: any) => (props: any) => {
-  const [session, loading] = useSession();
-
-  // if the component has a render property, we are good
-  if (Component.prototype.render) {
-    return <Component session={session} loading={loading} {...props} />;
-  }
-
-  // if the passed component is a function component, there is no need for this wrapper
-  throw new Error(
-    [
-      "You passed a function component, `withSession` is not needed.",
-      "You can `useSession` directly in your component.",
-    ].join("\n")
-  );
-};
+import withSession from "@/hooks/withSesssion";
 
 interface SettingsProps {
   session: any;
   loading: any;
+  label?: boolean;
 }
 
 const Themes = [
@@ -96,12 +81,19 @@ class ThemeSelection extends React.Component<
   }
 
   render() {
+    let label;
+    if (this.props.label === undefined) {
+      label = true;
+    } else {
+      label = this.props.label;
+    }
+
     return (
       <>
         <Select
           selected={this.state.theme}
           setSelected={(entry: any) => this.setState({ theme: entry })}
-          name="Appearance"
+          name={label ? "Appearance" : ""}
           data={Themes}
         />
       </>

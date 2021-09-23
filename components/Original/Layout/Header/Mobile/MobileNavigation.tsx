@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Link from "next/dist/client/link";
-import navigation from "./Navigation";
+import navigation from "../Navigation";
 import { useRouter } from "next/router";
 
 function classNames(...classes: any[]) {

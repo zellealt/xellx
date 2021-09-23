@@ -1,7 +1,8 @@
 const Navigation = [
-  { name: "Dashboard", href: "/dashboard", current: false },
-  { name: "Statistics", href: "/statistics", current: false },
-  { name: "Changelog", href: "/changelog", current: false },
+  { name: "Home", href: "/home", home: true },
+  { name: "Dashboard", href: "/dashboard", dashboard: true },
+  { name: "Statistics", href: "/statistics" },
+  { name: "Changelog", href: "/changelog" },
 ];
 
 export default Navigation;
