@@ -26,14 +26,16 @@ const Log = (props: {
         <div>
           <div className="flex items-center gap-1">
             <img src={props.avatar} className="h-5 rounded-full" />
-            <p className="text-gray-300 text-sm font-light">{props.user}</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm font-light">
+              {props.user}
+            </p>
           </div>
 
-          <p className="text-gray-300">{props.title}</p>
+          <p className="text-gray-600 dark:text-gray-300">{props.title}</p>
         </div>
       </div>
 
-      <p className="text-gray-500 font-semibold pt-2">{props.date}</p>
+      <p className="text-gray-500 font-medium pt-2">{props.date}</p>
     </div>
   );
 };
