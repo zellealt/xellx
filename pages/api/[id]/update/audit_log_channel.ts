@@ -62,12 +62,10 @@ export default async function update_audit_log_channel(
 
   if (!is_channel_in_guild) {
     if (BigInt(data) !== BigInt(0)) {
-      return res
-        .status(401)
-        .json({
-          message: "Specified channel is not in guild",
-          status: "error",
-        });
+      return res.status(401).json({
+        message: "Specified channel is not in guild",
+        status: "error",
+      });
     }
     is_channel_in_guild = "None";
   } else {
@@ -84,16 +82,19 @@ export default async function update_audit_log_channel(
     },
   });
 
+  const markdownMessage = `Updated the channel to **${is_channel_in_guild}**`;
   const message = `Updated the channel to ${is_channel_in_guild}`;
 
   // @ts-ignore
   const session = await getSession({ req });
 
   await make_log(
-    message,
+    markdownMessage,
     // @ts-ignore
     session?.user?.name + "#" + session?.user?.discriminator,
-    BigInt(id)
+    BigInt(id),
+    session?.user?.image,
+    "updated_channel"
   );
 
   res.status(200).json({

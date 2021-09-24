@@ -1,8 +1,10 @@
 import prisma from "@/lib/prisma";
 const make_log = async (
-  action: string,
+  action: any,
   name: string | null | undefined,
-  guild_id: bigint
+  guild_id: bigint,
+  image: string | null | undefined,
+  icon: string | null | undefined
 ) => {
   if (name === null) {
     return;
@@ -17,6 +19,8 @@ const make_log = async (
       user: name || "",
       action: action,
       date: currentDateTime,
+      icon: icon || "",
+      image: image || "",
     },
   });
 

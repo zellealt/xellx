@@ -15,7 +15,6 @@ import Footer from "@/original/Layout/Footer/Footer";
 export default function Index() {
   const [session, loading] = useSession();
   const router = useRouter();
-
   const sessioned = check_session(session, loading, "do not redirect");
 
   if (sessioned === true) {
@@ -29,14 +28,11 @@ export default function Index() {
   } else {
     const [logs, setLogs] = useState("...");
 
-    useEffect(() => {
-      make_request(
-        `${process.env.NEXT_PUBLIC_APP_URI}/api/xellx/get/logs`
-      ).then((result: any) => {
+    make_request(`${process.env.NEXT_PUBLIC_APP_URI}/api/xellx/get/logs`).then(
+      (result: any) => {
         setLogs(result.logs);
-      });
-    });
-
+      }
+    );
     return (
       <div>
         <Title title="Bot" />

@@ -88,16 +88,19 @@ export default async function update_config_data(
     infoMessage = "";
   }
 
+  const markdownMessage = `Sucessfully updated the **${infoMessage}** commands`;
   const message = `Sucessfully updated the ${infoMessage} commands`;
 
   // @ts-ignore
   const session = await getSession({ req });
 
   await make_log(
-    message,
+    markdownMessage,
     // @ts-ignore
     session?.user?.name + "#" + session?.user?.discriminator,
-    BigInt(id)
+    BigInt(id),
+    session?.user?.image,
+    "updated_command"
   );
 
   res.status(200).json({

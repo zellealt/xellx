@@ -15,7 +15,9 @@ const generate_server_data = async (guild_id: BigInt) => {
   await make_log(
     "Created essential database querys",
     "Xellx Configurator",
-    BigInt(guild_id.toString())
+    BigInt(guild_id.toString()),
+    "/xellx0-nav.svg",
+    "updated_channel"
   );
 };
 

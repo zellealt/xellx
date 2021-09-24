@@ -74,7 +74,9 @@ export default async function remove_sticky_role(
     message,
     // @ts-ignore
     session?.user?.name + "#" + session?.user?.discriminator,
-    BigInt(id)
+    BigInt(id),
+    session?.user?.image,
+    "removed_server_data"
   );
 
   res.status(200).json({

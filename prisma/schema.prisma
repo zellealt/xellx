@@ -41,6 +41,8 @@ model logs {
   user     String
   action   String
   date     DateTime @default(now())
+  icon     String
+  image    String
 }
 
 model na_accounts {

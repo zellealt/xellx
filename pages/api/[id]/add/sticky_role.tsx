@@ -96,16 +96,19 @@ export default async function add_sticky_role(
     },
   });
 
+  const markdownMessage = `Added **${is_role_in_guild}** to the sticky roles`;
   const message = `Added ${is_role_in_guild} to the sticky roles`;
 
   // @ts-ignore
   const session = await getSession({ req });
 
   await make_log(
-    message,
+    markdownMessage,
     // @ts-ignore
     session?.user?.name + "#" + session?.user?.discriminator,
-    BigInt(id)
+    BigInt(id),
+    session?.user?.image,
+    "added_sticky_role"
   );
 
   res.status(200).json({

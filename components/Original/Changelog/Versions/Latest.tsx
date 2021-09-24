@@ -17,6 +17,10 @@ const Version = () => {
                     "Server Cards updated to have background blur and fallback characters.",
                   ],
                 },
+                {
+                  name: "Servers",
+                  listItem: ["Audit logs on the overview page has a new UI."],
+                },
               ],
             },
             {
@@ -40,6 +44,7 @@ const Version = () => {
                     "Cleaned the _app.tsx codebase.",
                     "Changed the codebase for children on components.",
                     "Free Global API for the global logs added.",
+                    "Updated logs database prisma schema",
                   ],
                 },
               ],

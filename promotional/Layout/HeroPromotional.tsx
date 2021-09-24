@@ -1,6 +1,5 @@
 import React from "react";
 import About from "./Hero/About";
-import Version from "./Hero/Version";
 import Image from "./Hero/Image";
 
 const Hero = () => {

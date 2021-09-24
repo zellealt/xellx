@@ -79,16 +79,19 @@ export default async function update_config_data(
     },
   });
 
+  const markdownMessage = `Updated the auto role to **${is_role_in_guild}**`;
   const message = `Updated the auto role to ${is_role_in_guild}`;
 
   // @ts-ignore
   const session = await getSession({ req });
 
   await make_log(
-    message,
+    markdownMessage,
     // @ts-ignore
     session?.user?.name + "#" + session?.user?.discriminator,
-    BigInt(id)
+    BigInt(id),
+    session?.user?.image,
+    "updated_auto_role"
   );
 
   res.status(200).json({

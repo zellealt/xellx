@@ -90,16 +90,19 @@ export default async function remove_sticky_role(
     },
   });
 
+  const markdownMessage = `Removed **${is_role_in_guild}** from the sticky roles`;
   const message = `Removed ${is_role_in_guild} from the sticky roles`;
 
   // @ts-ignore
   const session = await getSession({ req });
 
   await make_log(
-    message,
+    markdownMessage,
     // @ts-ignore
     session?.user?.name + "#" + session?.user?.discriminator,
-    BigInt(id)
+    BigInt(id),
+    session?.user?.image,
+    "removed_sticky_role"
   );
 
   res.status(200).json({
