@@ -20,6 +20,17 @@ const Version = () => {
               ],
             },
             {
+              name: "Promotional",
+              subCategory: [
+                {
+                  name: "",
+                  listItem: [
+                    "Entire new page revamp with a new: hero, features, single statistic and a call to action.",
+                  ],
+                },
+              ],
+            },
+            {
               name: "Development",
               subCategory: [
                 {
@@ -27,6 +38,7 @@ const Version = () => {
                   listItem: [
                     "Cleaned the _app.tsx codebase.",
                     "Changed the codebase for children on components.",
+                    "Free Global API for the global logs added.",
                   ],
                 },
               ],
