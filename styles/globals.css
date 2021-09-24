@@ -257,8 +257,8 @@ body {
   background-image: inherit;
   background-position: center;
   background-size: cover;
-  filter: blur(3px);
-  transform: scale(1);
+  filter: blur(5px);
+  transform: scale(1.25);
 }
 .module-inside {
   /* This will make it stack on top of the ::before */

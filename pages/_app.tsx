@@ -3,9 +3,8 @@ import "tailwindcss/tailwind.css";
 import "../styles/globals.css";
 import { Provider as AuthProvider } from "next-auth/client";
 import Header from "@/original/Layout/Header/Header";
-import Router from "next/router";
-import OverviewSkeletonLayer from "@/shimmered/Server/Overview/Layer";
 import React, { Fragment } from "react";
+import OverviewSkeletonLayer from "@/shimmered/Server/Overview/Layer";
 import SelectorSkeletonLayer from "@/shimmered/Selector/Layer";
 import PluginsSkeletonLayer from "@/shimmered/Server/Plugins/Layer";
 import StatsSkeletonLayer from "@/shimmered/Stats/Layer";
@@ -14,31 +13,7 @@ import ServerSettingsSkeletonLayer from "@/shimmered/Server/Settings/Layer";
 import SettingsSkeletonLayer from "@/shimmered/Settings/Layer";
 import LoadingBar from "react-top-loading-bar";
 import "../styles/three-dots.min.css";
-
-function changeSystemDarkMode() {
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-}
-
-const changeSystemDarkModeScript = `
-if (
-  localStorage.theme === "dark" ||
-  (!("theme" in localStorage) &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches)
-) {
-  document.documentElement.classList.add("dark");
-} else {
-  document.documentElement.classList.remove("dark");
-}
-`;
-
+import componentDidMountMethod from "app/Methods/componentDidMount";
 class MyApp extends App {
   state = {
     isStatsLoading: false,
@@ -52,78 +27,7 @@ class MyApp extends App {
   };
 
   componentDidMount() {
-    // Logging to prove _app.js only mounts once,
-    // but initializing router events here will also accomplishes
-    // goal of setting state on route change
-
-    const body = document.getElementsByTagName("body")[0];
-    body.className = "dark:bg-gray-900";
-
-    changeSystemDarkMode();
-
-    // On change system dark mode
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    var code = `
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      ${changeSystemDarkModeScript}
-    });
-    `;
-    try {
-      s.appendChild(document.createTextNode(code));
-      document.body.appendChild(s);
-    } catch (e) {
-      s.text = code;
-      document.body.appendChild(s);
-    }
-
-    Router.events.on("routeChangeStart", (page: any) => {
-      if (page.includes("overview")) {
-        this.setState({ isOverviewLoading: true, loading: true });
-      } else if (page.includes("server") && page.includes("plugins")) {
-        this.setState({ isPluginsLoading: true, loading: true });
-      } else if (page.includes("stat")) {
-        this.setState({ isStatsLoading: true, loading: true });
-      } else if (page.includes("server") && page.includes("settings")) {
-        this.setState({ isServerSettingsLoading: true, loading: true });
-      } else if (page.includes("settings")) {
-        this.setState({ isSettingsLoading: true, loading: true });
-      } else if (page.includes("server") && page.includes("auditlog")) {
-        this.setState({ isAuditLogLoading: true, loading: true });
-      } else if (page.includes("home")) {
-        return;
-      } else if (page.includes("commands")) {
-        return;
-      } else {
-        this.setState({ isHomeLoading: true, loading: true });
-      }
-      changeSystemDarkMode();
-    });
-
-    Router.events.on("routeChangeComplete", () => {
-      this.setState({
-        isPluginsLoading: false,
-        isOverviewLoading: false,
-        isHomeLoading: false,
-        isStatsLoading: false,
-        isAuditLogLoading: false,
-        isSettingsLoading: false,
-        isServerSettingsLoading: false,
-        loading: false,
-      });
-    });
-
-    Router.events.on("routeChangeError", () => {
-      this.setState({
-        isPluginsLoading: false,
-        isHomeLoading: false,
-        isOverviewLoading: false,
-        isAuditLogLoading: false,
-        isSettingsLoading: false,
-        isServerSettingsLoading: false,
-        loading: false,
-      });
-    });
+    componentDidMountMethod(document, window, this);
   }
 
   render() {

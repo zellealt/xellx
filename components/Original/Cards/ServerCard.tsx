@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-// @ts-ignore
-import analyze from "rgbaster";
 
 interface CardProps {
   isNull: null | string;
@@ -12,45 +10,43 @@ interface CardProps {
 }
 
 const ServerCard = (props: CardProps) => {
-  const [backgroundColor, setBackgroundColor] = useState("");
+  let icon = props.icon;
+  let style = {};
 
-  let icon = "";
   if (props.isNull === null) {
-    icon = "/default.png";
+    style = {};
   } else {
-    icon = props.icon;
+    style = {
+      backgroundImage: `url(${icon})`,
+    };
   }
 
-  useEffect(() => {
-    async function fetch() {
-      try {
-        const result = await analyze(icon);
-        setBackgroundColor(result[0].color);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    fetch();
-  });
-
   return (
-    <div className="overflow-hidden rounded-lg border dark:border-gray-800 transition">
-      <div
-        className="object-cover h-48 module"
-        style={{
-          background: backgroundColor,
-        }}
-      >
-        <div className="module-inside">
-          <span className="helper"></span>
-          <img
-            className="align-middle	object-cover h-30 rounded-full m-auto block ring-2 ring-white dark:ring-gray-800 filter drop-shadow-xl"
-            src={icon}
-            width={128}
-            height={128}
-            alt="Server Logo"
-          />
+    <div className="rounded-lg border dark:border-gray-800 transition">
+      <div className="overflow-hidden rounded-lg">
+        <div className="object-cover h-48 module" style={style}>
+          <div className="module-inside">
+            <span className="helper"></span>
+            {props.isNull ? (
+              <img
+                className="align-middle	object-cover h-30 rounded-full m-auto block ring-2 ring-white filter drop-shadow-xl"
+                src={icon}
+                width={128}
+                height={128}
+                alt="Server Logo"
+              />
+            ) : (
+              <h2
+                style={{
+                  width: 128,
+                  height: 128,
+                }}
+                className="align-middle	object-cover h-30 rounded-full m-auto block ring-2 ring-white dark:ring-gray-800 filter drop-shadow-xl text-3xl font-black"
+              >
+                <span className="center">{props.name.charAt(0)}</span>
+              </h2>
+            )}
+          </div>
         </div>
       </div>
       <div className="px-6 py-4 z-50">
