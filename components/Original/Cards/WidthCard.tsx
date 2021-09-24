@@ -6,18 +6,18 @@ interface CardProps {
 const WidthCard = (props: CardProps) => {
   return (
     <div className="overflow-hidden rounded-lg border dark:border-gray-800 w-full">
-      <div className="px-6 py-4">
+      <div className="px-6 pt-4 md:py-4">
         <h4
           className={`mb-3 text-xl font-semibold tracking-tight text-${
             props.name.color
           } ${
             props.name.color === "gray-900" ? "dark:text-gray-100" : ""
-          } float-left`}
+          } md:float-left text-center md:text-left`}
         >
           {props.name.content}
         </h4>
         <h4
-          className={`mb-3 text-xl tracking-tight text-${props.content.color} float-right font-normal`}
+          className={`mb-3 text-xl tracking-tight text-${props.content.color} md:float-right text-center md:text-left font-normal`}
         >
           {props.content.content}
         </h4>

@@ -9,7 +9,7 @@ import V001 from "./Versions/0.0.1";
 
 const Module = () => {
   return (
-    <div className="md:flex md:gap-5 space-y-5 md:space-y-0">
+    <div className="p-3 md:p-0 md:flex md:gap-5 space-y-5 md:space-y-0">
       <div className="md:w-3/5 space-y-5">
         <Latest />
         <V003 />

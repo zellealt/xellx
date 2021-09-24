@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import DesktopNavigation from "./DesktopNavigation";
-import MobileNavigation from "./MobileNavigation";
 import React, { Fragment } from "react";
 import { Disclosure, Transition } from "@headlessui/react";
 import { XIcon, MenuIcon } from "@heroicons/react/solid";

@@ -13,7 +13,7 @@ const DesktopNavigation = (props: { currentPage: string }) => {
 
   return (
     <div>
-      <div className="flex items-baseline space-x-4">
+      <div className="md:flex md:items-baseline md:space-x-4">
         {navigation.map((item) => (
           <button key={item.key} onClick={item.href}>
             <a
