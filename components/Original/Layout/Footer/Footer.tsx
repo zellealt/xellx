@@ -5,6 +5,7 @@ import React from "react";
 import XellxLogo from "promotional/Brand/XellxLogo";
 import Promotional from "./Nav/Promotional";
 import Dashboard from "./Nav/Dashboard";
+import Other from "./Nav/Other";
 
 function Footer() {
   return (
@@ -56,6 +57,12 @@ function Footer() {
                 Dashboard
               </p>
               <Dashboard />
+            </div>
+            <div>
+              <p className="font-semibold tracking-wide text-indigo-400">
+                Other
+              </p>
+              <Other />
             </div>
           </div>
         </div>

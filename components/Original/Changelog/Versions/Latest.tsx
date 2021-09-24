@@ -26,6 +26,7 @@ const Version = () => {
                   name: "",
                   listItem: [
                     "Entire new page revamp with a new: hero, features, single statistic and a call to action.",
+                    "Added a footer",
                   ],
                 },
               ],

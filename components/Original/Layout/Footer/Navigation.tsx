@@ -7,3 +7,5 @@ export const Dash = [
   { name: "Statistics", href: "/statistics" },
   { name: "Selector", href: "/dashboard" },
 ];
+
+export const Other = [{ name: "Privacy Policy", href: "/privacy" }];
