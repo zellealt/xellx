@@ -1,33 +1,34 @@
 import React from "react";
-import Cards from "../HomeCard";
+import Cards from "../Card";
 
 const Version = () => {
   return (
     <Cards
       cards={[
         {
-          name: "Latest Alpha 0.0.4",
-          desc: "Some bugs fixed and UI changes",
+          name: "Old Alpha 0.0.3",
           categorys: [
             {
               name: "Dashboard",
               subCategory: [
                 {
-                  name: "General",
+                  name: "Servers",
                   listItem: [
-                    "Server Cards updated to have background blur and fallback characters.",
+                    "Updated snackbars",
+                    "Updated the entire codebase for the plugins section",
                   ],
                 },
               ],
             },
+
             {
-              name: "Development",
+              name: "Promotional",
               subCategory: [
                 {
                   name: "",
                   listItem: [
-                    "Cleaned the _app.tsx codebase.",
-                    "Changed the codebase for children on components.",
+                    "Changed the homepage to fit with the dashboard design",
+                    "Used the same header for the dashboard and promotional",
                   ],
                 },
               ],

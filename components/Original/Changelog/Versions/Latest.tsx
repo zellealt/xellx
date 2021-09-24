@@ -6,29 +6,27 @@ const Version = () => {
     <Cards
       cards={[
         {
-          name: "Alpha 0.0.3",
+          name: "Latest Alpha 0.0.4",
           categorys: [
             {
               name: "Dashboard",
               subCategory: [
                 {
-                  name: "Servers",
+                  name: "General",
                   listItem: [
-                    "Updated snackbars",
-                    "Updated the entire codebase for the plugins section",
+                    "Server Cards updated to have background blur and fallback characters.",
                   ],
                 },
               ],
             },
-
             {
-              name: "Promotional",
+              name: "Development",
               subCategory: [
                 {
                   name: "",
                   listItem: [
-                    "Changed the homepage to fit with the dashboard design",
-                    "Used the same header for the dashboard and promotional",
+                    "Cleaned the _app.tsx codebase.",
+                    "Changed the codebase for children on components.",
                   ],
                 },
               ],

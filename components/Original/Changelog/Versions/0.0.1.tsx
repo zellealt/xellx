@@ -6,7 +6,7 @@ const Version = () => {
     <Cards
       cards={[
         {
-          name: "Alpha 0.0.1",
+          name: "Old Alpha 0.0.1",
           categorys: [
             {
               name: "Dashboard",
@@ -16,7 +16,7 @@ const Version = () => {
                   listItem: [
                     <span>
                       Added Discord Authentication{" "}
-                      <span className="italic text-gray-200 font-extralight">
+                      <span className="italic text-gray-900 dark:text-gray-200 font-extralight">
                         ( NextAuth )
                       </span>
                     </span>,
@@ -38,7 +38,7 @@ const Version = () => {
                   listItem: [
                     <span>
                       Added commands page{" "}
-                      <span className="italic text-gray-200 font-extralight">
+                      <span className="italic text-gray-900 dark:text-gray-200 font-extralight">
                         ( with automatic json file linking )
                       </span>
                     </span>,

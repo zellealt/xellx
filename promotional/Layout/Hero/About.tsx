@@ -6,7 +6,7 @@ import ChipWithLinkText from "../ChipWithLinkText";
 
 const Text = () => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 p-10 rounded-lg shadow-lg">
+    <div className="bg-gray-100 dark:bg-gray-900 p-10 rounded-lg shadow-md hover:shadow-lg transition">
       <div className="space-y-6">
         <div className="flex justify-center">
           <XellxPartialBrand height="12" color="indigo-600" />
@@ -15,7 +15,7 @@ const Text = () => {
         <ChipWithLinkText
           link="/changelog"
           chipText="what's new"
-          text="Version 0.0.3 has released"
+          text="Version 0.0.4 has released"
         />
 
         <div className="max-w-lg space-y-5 text-center m-auto">
@@ -23,7 +23,7 @@ const Text = () => {
             A new bot for a new generation
           </h1>
 
-          <p className="text-center text-gray-400 font-semibold dark:text-gray-300 m-auto">
+          <p className="text-center text-gray-600 dark:text-gray-300 m-auto">
             Discord Bots have not evolved for years now. Confusing dashboards.
             Bare mobile support.
           </p>

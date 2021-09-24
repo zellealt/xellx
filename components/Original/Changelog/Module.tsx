@@ -2,18 +2,22 @@ import Card from "@/original/Cards/Card";
 import Cards from "./Card";
 
 import React from "react";
-import V003 from "./Versions/Latest";
+import Latest from "./Versions/Latest";
+import V003 from "./Versions/0.0.3";
 import V002 from "./Versions/0.0.2";
 import V001 from "./Versions/0.0.1";
 
 const Module = () => {
   return (
-    <div className="grid lg:grid-cols-2 gap-10 sm:mx-0 mx-3">
-      <V003 />
-
-      <V002 />
-
-      <V001 />
+    <div className="md:flex md:gap-5 space-y-5 md:space-y-0">
+      <div className="md:w-3/5 space-y-5">
+        <Latest />
+        <V003 />
+      </div>
+      <div className="md:w-2/5 space-y-5">
+        <V002 />
+        <V001 />
+      </div>
     </div>
   );
 };

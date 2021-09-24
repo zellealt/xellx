@@ -9,7 +9,7 @@ const ChipWithLinkText = (props: {
 }) => {
   return (
     <div className="space-x-3 text-center">
-      <span className="uppercase text-indigo-600 bg-indigo-50 dark:bg-gray-800 text-sm rounded py-1 px-2 font-semibold">
+      <span className="uppercase text-indigo-600 bg-indigo-100 dark:bg-gray-800 text-sm rounded py-1 px-2 font-semibold">
         {props.chipText}
       </span>
       <span className="text-indigo-600 text-sm font-semibold">

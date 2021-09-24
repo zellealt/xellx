@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+
 .tooltip {
   @apply invisible absolute;
 }
@@ -12,6 +13,17 @@
 .spinner {
   -webkit-animation: rotator 1.4s linear infinite;
   animation: rotator 1.4s linear infinite;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 @-webkit-keyframes rotator {
