@@ -15,15 +15,13 @@ const AuditLogLayer = (props: { guild: discordGuild }) => {
         leftTitle="Manage Server"
         rightContent={null}
         rightTitle={null}
-        content={
-          <>
-            <SideNav
-              padding={false}
-              content={<DashBoardGrid guild={props.guild} />}
-            />
-          </>
-        }
-      />
+      >
+        <>
+          <SideNav padding={false}>
+            <DashBoardGrid guild={props.guild} />
+          </SideNav>
+        </>
+      </PageHeader>
     </>
   );
 };

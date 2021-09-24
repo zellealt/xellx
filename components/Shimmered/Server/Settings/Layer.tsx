@@ -15,19 +15,15 @@ const Layer = () => {
         leftTitle="Manage Server"
         rightContent={null}
         rightTitle={null}
-        content={
-          <>
-            <SideNav
-              padding={true}
-              content={
-                <div>
-                  <Grid />
-                </div>
-              }
-            />
-          </>
-        }
-      />
+      >
+        <>
+          <SideNav padding={true}>
+            <div>
+              <Grid />
+            </div>
+          </SideNav>
+        </>
+      </PageHeader>
     </>
   );
 };

@@ -6,7 +6,7 @@ import React, { Fragment } from "react";
 import { Disclosure, Transition } from "@headlessui/react";
 import { XIcon, MenuIcon } from "@heroicons/react/solid";
 
-const Subnav = (props: { content: any; padding: boolean }) => {
+const Subnav = (props: { children: any; padding: boolean }) => {
   const router = useRouter();
   const { id } = router.query;
   return (
@@ -25,7 +25,7 @@ const Subnav = (props: { content: any; padding: boolean }) => {
         )}
       </Disclosure>
       <div className={props.padding ? "mx-auto px-4 sm:px-6 lg:px-8 mt-5" : ""}>
-        {props.content}
+        {props.children}
       </div>
     </div>
   );

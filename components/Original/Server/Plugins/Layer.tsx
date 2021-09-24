@@ -15,15 +15,13 @@ const CommandsLayer = (props: { guild: discordGuild }) => {
         leftTitle="Manage Server"
         rightContent={null}
         rightTitle={null}
-        content={
-          <>
-            <SideNav
-              padding={true}
-              content={<DashBoardGrid guild={props.guild} />}
-            />
-          </>
-        }
-      />
+      >
+        <>
+          <SideNav padding={true}>
+            <DashBoardGrid guild={props.guild} />
+          </SideNav>
+        </>
+      </PageHeader>
     </>
   );
 };

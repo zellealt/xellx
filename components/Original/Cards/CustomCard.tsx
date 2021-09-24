@@ -13,7 +13,7 @@ interface CardProps {
   short_desc: any;
   long_desc: any;
   guild: discordGuild;
-  content: any;
+  children: any;
 }
 
 const withSession = (Component: any) => (props: any) => {
@@ -82,26 +82,25 @@ class CustomCard extends React.Component<
             {this.props.short_desc}
           </div>
           <Modal
-            ref={ref}
-            content={
-              <EmptyContent
-                ref={ref}
-                setOpen={() => this.setState({ open: false })}
-                content={
-                  <div>
-                    <Custom
-                      name={this.props.name}
-                      icon={CommandIcon}
-                      content={this.props.content}
-                      desc={this.props.long_desc}
-                    />
-                  </div>
-                }
-              />
-            }
             setOpen={() => this.setState({ open: false })}
             open={this.state.open}
-          />
+            ref={ref}
+          >
+            <EmptyContent
+              ref={ref}
+              setOpen={() => this.setState({ open: false })}
+            >
+              <div>
+                <Custom
+                  name={this.props.name}
+                  icon={CommandIcon}
+                  desc={this.props.long_desc}
+                >
+                  {this.props.children}
+                </Custom>
+              </div>
+            </EmptyContent>
+          </Modal>
         </div>
         <div className="px-6 py-4 absolute w-full bottom-0">
           <ButtonLayout

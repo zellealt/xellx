@@ -7,7 +7,7 @@ const Custom = (props: {
   name: string;
   desc: string;
   icon: any;
-  content: any;
+  children: any;
 }) => {
   return (
     <div className="dark:bg-gray-900">
@@ -15,7 +15,7 @@ const Custom = (props: {
       <Spacer px={15} />
       <Seperator />
       <Spacer px={5} />
-      {props.content}
+      {props.children}
       <Spacer px={28} />
     </div>
   );

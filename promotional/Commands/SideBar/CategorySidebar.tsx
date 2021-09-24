@@ -1,7 +1,7 @@
 import Entry from "./Entry";
 
 const CategorySideBar = (props: {
-  content: any;
+  children: any;
   category: string;
   categorys: string[];
 }) => {
@@ -18,7 +18,7 @@ const CategorySideBar = (props: {
           />
         ))}
       </div>
-      <div className="w-full ml-5">{props.content}</div>
+      <div className="w-full ml-5">{props.children}</div>
     </div>
   );
 };

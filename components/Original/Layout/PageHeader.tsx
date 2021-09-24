@@ -3,7 +3,7 @@ interface PageHeaderProps {
   rightContent?: any | null;
   rightTitle?: string | null;
   leftTitle?: string | null;
-  content?: any;
+  children?: any;
   padding?: boolean;
   fullWidth?: boolean;
 }
@@ -37,7 +37,7 @@ const PageHeader = (props: PageHeaderProps) => {
         </div>
       </header>
       <main>
-        <div className={`${contentClasses}`}>{props.content}</div>
+        <div className={`${contentClasses}`}>{props.children}</div>
       </main>
     </div>
   );

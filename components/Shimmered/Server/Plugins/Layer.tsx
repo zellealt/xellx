@@ -14,16 +14,13 @@ function PluginsSkeletonLayer() {
         leftTitle="Manage Server"
         rightContent={null}
         rightTitle={null}
-        content={
-          <>
-            <SideNav
-              currentPage="plugins"
-              padding={true}
-              content={<DashBoardGrid />}
-            />
-          </>
-        }
-      />
+      >
+        <>
+          <SideNav currentPage="plugins" padding={true}>
+            <DashBoardGrid />
+          </SideNav>
+        </>
+      </PageHeader>
     </>
   );
 }

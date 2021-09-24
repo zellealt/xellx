@@ -38,8 +38,6 @@ export default function Index(props: { guilds: discordGuildIndex }) {
 
   const sessioned = check_session(session, loading, false);
 
-  console.log(sessioned);
-
   if (sessioned === true) {
     const handleKeyDown = (event: handleKeyDownEvent | any) => {
       if (event.key !== "Enter") {
@@ -85,16 +83,15 @@ export default function Index(props: { guilds: discordGuildIndex }) {
             />
           }
           leftTitle="Dashboard"
-          content={
-            <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-10 md:justify-center">
-              {guilds.map((guild) => {
-                return <Card guild={guild} key={guild.id} />;
-              })}
-            </div>
-          }
           leftContent={null}
           rightTitle={null}
-        />
+        >
+          <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-10 md:justify-center">
+            {guilds.map((guild) => {
+              return <Card guild={guild} key={guild.id} />;
+            })}
+          </div>
+        </PageHeader>
       </>
     );
   } else {

@@ -59,25 +59,20 @@ const DeleteAccount = () => {
         href=""
         onClick={() => setOpen(true)}
       />
-      <Modal
-        ref={ref}
-        content={
-          <Custom
-            color="red"
-            title="Are you sure?"
-            desc="This is irreversible and deletes every trace (except logs) of you in the database?"
-            action="Yes"
-            ref={ref}
-            setOpen={setOpen}
-            onClick={() => {
-              setOpen(false);
-              setStart(true);
-            }}
-          />
-        }
-        setOpen={setOpen}
-        open={open}
-      />
+      <Modal ref={ref} setOpen={setOpen} open={open}>
+        <Custom
+          color="red"
+          title="Are you sure?"
+          desc="This is irreversible and deletes every trace (except logs) of you in the database?"
+          action="Yes"
+          ref={ref}
+          setOpen={setOpen}
+          onClick={() => {
+            setOpen(false);
+            setStart(true);
+          }}
+        />
+      </Modal>
       <Portal>
         <Transition
           show={start}

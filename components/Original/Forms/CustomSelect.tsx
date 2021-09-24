@@ -14,7 +14,7 @@ const CustomSelect = (props: {
   data: any;
   name: string;
   custom: any;
-  content: any;
+  children: any;
   setSelected: any;
 }) => {
   if (props.data === null) {
@@ -29,7 +29,7 @@ const CustomSelect = (props: {
         {({ open }) => (
           <>
             <div className="w-full container mx-auto flex flex-row flex-wrap gap-2 z-50">
-              {props.content}
+              {props.children}
               <Listbox.Button>
                 {props.custom}
                 <Transition

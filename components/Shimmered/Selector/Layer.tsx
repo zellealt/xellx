@@ -16,10 +16,11 @@ function ShimmeredLayer4() {
         />
       }
       leftTitle="Dashboard"
-      content={<ServerCardsShimmerLayout />}
       leftContent={null}
       rightTitle={null}
-    />
+    >
+      <ServerCardsShimmerLayout />
+    </PageHeader>
   );
 }
 

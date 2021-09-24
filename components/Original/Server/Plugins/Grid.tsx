@@ -53,26 +53,28 @@ class DashBoardGrid extends React.Component<
           name="Sticky Roles"
           long_desc="When a user leaves the server with one one of the specified roles, upon joining back it will automaticly be applied."
           short_desc="Specified roles will stay on the user after rejoin."
-          content={
-            <StickyRoles defaultroles={false} guild={this.props.guild} />
-          }
-        />
+        >
+          <StickyRoles defaultroles={false} guild={this.props.guild} />
+        </CustomCard>
         <CustomCard
           guild={this.props.guild}
           key="special_channels"
           name="Special Channels"
           long_desc="Channels such as the audit log and the welcome messages channel are requied for these to function."
           short_desc="Channels which are requied for certain functions."
-          content={<SpecialChannels guild={this.props.guild} />}
-        />
+        >
+          <SpecialChannels guild={this.props.guild} />
+        </CustomCard>
+
         <CustomCard
           guild={this.props.guild}
           key="auto_role"
           name="Auto Role"
           long_desc="When a user joins the server the specified role will automaticlly applied."
           short_desc="Automatically assigns role to all new users."
-          content={<AutoRole guild={this.props.guild} />}
-        />
+        >
+          <AutoRole guild={this.props.guild} />
+        </CustomCard>
       </div>
     );
   }

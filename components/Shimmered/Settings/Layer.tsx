@@ -12,24 +12,23 @@ const ShimmerdSetLayer1 = () => {
       fullWidth={false}
       rightContent={null}
       leftTitle="Settings"
-      content={
-        <div className="p-3 sm:p-0">
-          <UserCard />
-
-          <Spacer px={12} />
-
-          <Seperator />
-
-          <ThemeSelection />
-
-          <Spacer px={12} />
-
-          <DeleteAccount />
-        </div>
-      }
       leftContent={undefined}
       rightTitle={null}
-    />
+    >
+      <div className="p-3 sm:p-0">
+        <UserCard />
+
+        <Spacer px={12} />
+
+        <Seperator />
+
+        <ThemeSelection />
+
+        <Spacer px={12} />
+
+        <DeleteAccount />
+      </div>
+    </PageHeader>
   );
 };
 

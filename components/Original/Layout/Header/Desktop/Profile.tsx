@@ -11,7 +11,6 @@ const classNames = (...classes: any) => {
 };
 
 const DesktopProfile = (props: { session: any; setOpen: any }) => {
-  console.log(props.session);
   if (props.session === null) {
     return <ThemeSelection label={false} />;
   }

@@ -85,7 +85,8 @@ class StickyRoles extends React.Component<
               name="add"
             />
           }
-          content={this.state.selected.map((role: any) => {
+        >
+          {this.state.selected.map((role: any) => {
             return (
               <Chip
                 key={role.id}
@@ -96,7 +97,7 @@ class StickyRoles extends React.Component<
               />
             );
           })}
-        />
+        </CustomSelect>
         <br />
         {this.state.snackbar && this.state.snackbar}
       </div>

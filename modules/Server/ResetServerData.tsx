@@ -55,25 +55,20 @@ const ResetServerData = (props: { guild: discordGuild }) => {
         href=""
         onClick={() => setOpen(true)}
       />
-      <Modal
-        ref={ref}
-        content={
-          <Custom
-            color="red"
-            title="Are you sure?"
-            desc="Are you sure you want to erase all Xellx Server Data?"
-            action="Yes"
-            ref={ref}
-            setOpen={setOpen}
-            onClick={() => {
-              setOpen(false);
-              setStart(true);
-            }}
-          />
-        }
-        setOpen={setOpen}
-        open={open}
-      />
+      <Modal ref={ref} setOpen={setOpen} open={open}>
+        <Custom
+          color="red"
+          title="Are you sure?"
+          desc="Are you sure you want to erase all Xellx Server Data?"
+          action="Yes"
+          ref={ref}
+          setOpen={setOpen}
+          onClick={() => {
+            setOpen(false);
+            setStart(true);
+          }}
+        />
+      </Modal>
       <Portal>
         <Transition
           show={start}

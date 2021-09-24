@@ -5,7 +5,9 @@ import React from "react";
 
 const ChangeLog = () => {
   return (
-    <PageHeader leftTitle="Changelog" padding={true} content={<Module />} />
+    <PageHeader leftTitle="Changelog" padding={true}>
+      <Module />
+    </PageHeader>
   );
 };
 

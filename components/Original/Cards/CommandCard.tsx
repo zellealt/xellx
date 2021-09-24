@@ -164,29 +164,25 @@ class CommandCard extends React.Component<
           </div>
           <Modal
             ref={ref}
-            content={
-              <EmptyContent
-                ref={ref}
-                setOpen={() => this.setState({ open: false })}
-                content={
-                  this.props.commands && (
-                    <Commands
-                      change_state={(state: any) =>
-                        this.setState({ data: state })
-                      }
-                      state={this.state}
-                      icon={CommandIcon}
-                      desc={this.props.long_desc}
-                      data={this.props.commands}
-                      name={this.props.name}
-                    />
-                  )
-                }
-              />
-            }
             setOpen={() => this.setState({ open: false })}
             open={this.state.open}
-          />
+          >
+            <EmptyContent
+              ref={ref}
+              setOpen={() => this.setState({ open: false })}
+            >
+              {this.props.commands && (
+                <Commands
+                  change_state={(state: any) => this.setState({ data: state })}
+                  state={this.state}
+                  icon={CommandIcon}
+                  desc={this.props.long_desc}
+                  data={this.props.commands}
+                  name={this.props.name}
+                />
+              )}
+            </EmptyContent>
+          </Modal>
         </div>
         <div className="px-6 py-4 absolute w-full bottom-0">
           <ButtonLayout

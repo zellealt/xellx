@@ -12,11 +12,9 @@ const Category = (props: { category: string; categorys: string[] }) => {
       <Title title={`${props.category} Commands`} />
       <Header />
       <PageTitle title="Commands" desc="List of bot commands" />
-      <CategorySideBar
-        categorys={props.categorys}
-        category={props.category}
-        content={<Module category={props.category} />}
-      />
+      <CategorySideBar categorys={props.categorys} category={props.category}>
+        <Module category={props.category} />
+      </CategorySideBar>
     </div>
   );
 };

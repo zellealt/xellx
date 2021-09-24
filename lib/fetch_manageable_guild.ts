@@ -82,7 +82,6 @@ const fetch_manageable_guild = async (guild_id: bigint, token: string) => {
 
     return resAdvJson;
   } catch (e) {
-    console.log(e);
     return false;
   }
 };

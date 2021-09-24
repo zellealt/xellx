@@ -19,27 +19,26 @@ export default function Settings() {
       <>
         <Title title="User Settings" />
         <PageHeader
+          leftContent={null}
+          rightTitle={null}
           padding={true}
           fullWidth={false}
           rightContent={null}
           leftTitle="Settings"
-          content={
-            <div className="p-3 sm:p-0">
-              <UserCard />
+        >
+          <div className="p-3 sm:p-0">
+            <UserCard />
 
-              <Spacer px={12} />
+            <Spacer px={12} />
 
-              <Seperator />
+            <Seperator />
 
-              <ThemeSelection />
-              <Spacer px={12} />
+            <ThemeSelection />
+            <Spacer px={12} />
 
-              <DeleteAccount />
-            </div>
-          }
-          leftContent={null}
-          rightTitle={null}
-        />
+            <DeleteAccount />
+          </div>
+        </PageHeader>
       </>
     );
   } else {

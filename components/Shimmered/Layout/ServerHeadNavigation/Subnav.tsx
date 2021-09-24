@@ -7,7 +7,7 @@ import { Disclosure, Transition } from "@headlessui/react";
 import { XIcon, MenuIcon } from "@heroicons/react/solid";
 
 const Subnav = (props: {
-  content: any;
+  children: any;
   padding: boolean;
   currentPage: string;
 }) => {
@@ -29,7 +29,7 @@ const Subnav = (props: {
         )}
       </Disclosure>
       <div className={props.padding ? "mx-auto px-4 sm:px-6 lg:px-8 mt-5" : ""}>
-        {props.content}
+        {props.children}
       </div>
     </div>
   );

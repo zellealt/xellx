@@ -19,8 +19,6 @@ export default async function remove_account(
   // @ts-ignore
   const session: any = await getSession({ req });
 
-  console.log(session?.user.id.toString());
-
   const query = await prisma.na_accounts.findUnique({
     where: {
       provider_account_id: session?.user.id.toString(),

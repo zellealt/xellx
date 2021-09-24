@@ -38,41 +38,40 @@ export default function StatsSkeletonLayer(props: {
         </div>
       }
       leftTitle="Statistics"
-      content={
-        <div>
-          <div>
-            <Cards
-              globalStatus={props.globalStatusJson.status}
-              guilds={props.guilds}
-            />
-            <Spacer px={24} />
-          </div>
-          <div className="p-3 md:p-0">
-            <Seperator />
-            {props.statusJson.components.map((item: any) => {
-              let color;
-              if (item.status === "operational") color = "green-400";
-              if (item.status === "degraded_performance") color = "yellow-400";
-              if (item.status === "partial_outage") color = "yellow-700";
-              if (item.status === "major_outage") color = "red-400";
-              if (item.status === "under_maintenance") color = "blue-400";
-              const status = {
-                content: formatStatus(item.status),
-                color: color,
-              };
-              const name = { content: item.name, color: "gray-900" };
-              return (
-                <div key={item.name}>
-                  <WidthCard name={name} content={status} />
-                  <Spacer px={24} />
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      }
       leftContent={null}
       rightTitle={null}
-    />
+    >
+      <div>
+        <div>
+          <Cards
+            globalStatus={props.globalStatusJson.status}
+            guilds={props.guilds}
+          />
+          <Spacer px={24} />
+        </div>
+        <div className="p-3 md:p-0">
+          <Seperator />
+          {props.statusJson.components.map((item: any) => {
+            let color;
+            if (item.status === "operational") color = "green-400";
+            if (item.status === "degraded_performance") color = "yellow-400";
+            if (item.status === "partial_outage") color = "yellow-700";
+            if (item.status === "major_outage") color = "red-400";
+            if (item.status === "under_maintenance") color = "blue-400";
+            const status = {
+              content: formatStatus(item.status),
+              color: color,
+            };
+            const name = { content: item.name, color: "gray-900" };
+            return (
+              <div key={item.name}>
+                <WidthCard name={name} content={status} />
+                <Spacer px={24} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </PageHeader>
   );
 }

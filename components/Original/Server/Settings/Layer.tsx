@@ -15,19 +15,13 @@ const Layer = (props: { guild: discordGuild }) => {
         leftTitle="Manage Server"
         rightContent={null}
         rightTitle={null}
-        content={
-          <>
-            <SideNav
-              padding={true}
-              content={
-                <div>
-                  <Grid guild={props.guild} />
-                </div>
-              }
-            />
-          </>
-        }
-      />
+      >
+        <>
+          <SideNav padding={true}>
+            <Grid guild={props.guild} />
+          </SideNav>
+        </>
+      </PageHeader>
     </>
   );
 };

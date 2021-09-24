@@ -53,35 +53,31 @@ export default function StatsShimmeredLayer1() {
         </div>
       }
       leftTitle="Statistics"
-      content={
-        <div>
-          <div>
-            <Cards />
-            <Spacer px={24} />
-          </div>
-          <div className="p-3 md:p-0">
-            <Seperator />
-            <SampleCard
-              name={shimmerPromoObject}
-              content={shimmerOutageObject}
-            />
-            <SampleCard
-              name={shimmerDashObject}
-              content={shimmerOperationalObject}
-            />
-            <SampleCard
-              name={shimmerShortObject}
-              content={shimmerOperationalObject}
-            />
-            <SampleCard
-              name={shimmerBotObject}
-              content={shimmerOperationalObject}
-            />
-          </div>
-        </div>
-      }
       leftContent={null}
       rightTitle={null}
-    />
+    >
+      <div>
+        <div>
+          <Cards />
+          <Spacer px={24} />
+        </div>
+        <div className="p-3 md:p-0">
+          <Seperator />
+          <SampleCard name={shimmerPromoObject} content={shimmerOutageObject} />
+          <SampleCard
+            name={shimmerDashObject}
+            content={shimmerOperationalObject}
+          />
+          <SampleCard
+            name={shimmerShortObject}
+            content={shimmerOperationalObject}
+          />
+          <SampleCard
+            name={shimmerBotObject}
+            content={shimmerOperationalObject}
+          />
+        </div>
+      </div>
+    </PageHeader>
   );
 }

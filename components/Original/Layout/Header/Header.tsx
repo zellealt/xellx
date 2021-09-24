@@ -72,20 +72,15 @@ function Header() {
           )}
         </Disclosure>
 
-        <Modal
-          ref={ref}
-          content={
-            <Logout
-              ref={ref}
-              setOpen={setOpen}
-              signOut={() => {
-                signOut();
-              }}
-            />
-          }
-          setOpen={setOpen}
-          open={open}
-        />
+        <Modal ref={ref} setOpen={setOpen} open={open}>
+          <Logout
+            ref={ref}
+            setOpen={setOpen}
+            signOut={() => {
+              signOut();
+            }}
+          />
+        </Modal>
       </div>
     );
   } else {

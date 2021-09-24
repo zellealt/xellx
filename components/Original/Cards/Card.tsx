@@ -3,7 +3,7 @@ import XellxPartialBrand from "../Layout/Header/XellxPartialBrand";
 
 interface CardProps {
   name?: any;
-  content: any;
+  children: any;
   xellxImage?: any;
 }
 
@@ -19,7 +19,7 @@ const Card = (props: CardProps) => {
           )}
           {props.name}
         </h4>
-        <div className="leading-normal">{props.content}</div>
+        <div className="leading-normal">{props.children}</div>
       </div>
     </div>
   );
@@ -32,7 +32,7 @@ export const EmptyCard = (props: CardProps) => {
         <h4 className="px-6 py-4 text-xl font-semibold tracking-tight text-gray-800 bg-gray-50 dark:bg-gray-800 dark:text-white">
           {props.name}
         </h4>
-        <div className="leading-normal">{props.content}</div>
+        <div className="leading-normal">{props.children}</div>
       </div>
     </div>
   );

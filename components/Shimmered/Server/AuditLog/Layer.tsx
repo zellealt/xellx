@@ -15,16 +15,13 @@ const AuditLogLayer = () => {
         leftTitle="Manage Server"
         rightContent={null}
         rightTitle={null}
-        content={
-          <>
-            <SideNav
-              currentPage="auditlog"
-              padding={false}
-              content={<DashBoardGrid />}
-            />
-          </>
-        }
-      />
+      >
+        <>
+          <SideNav currentPage="auditlog" padding={false}>
+            <DashBoardGrid />
+          </SideNav>
+        </>
+      </PageHeader>
     </>
   );
 };

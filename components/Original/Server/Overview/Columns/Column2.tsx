@@ -25,12 +25,11 @@ const Column2 = (props: { guild: discordGuild }) => {
             </button>
           </div>
         }
-        content={
-          <div>
-            <AuditLogX guild={props.guild} />
-          </div>
-        }
-      />
+      >
+        <div>
+          <AuditLogX guild={props.guild} />
+        </div>
+      </EmptyCard>
     </div>
   );
 };

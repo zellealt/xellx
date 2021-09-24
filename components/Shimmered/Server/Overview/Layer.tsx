@@ -14,16 +14,11 @@ function OverviewSkeletonLayer() {
         leftTitle="Manage Server"
         rightContent={null}
         rightTitle={null}
-        content={
-          <>
-            <SideNav
-              currentPage="overview"
-              padding={true}
-              content={<DashBoardGrid />}
-            />
-          </>
-        }
-      />
+      >
+        <SideNav currentPage="overview" padding={true}>
+          <DashBoardGrid />
+        </SideNav>
+      </PageHeader>
     </>
   );
 }
