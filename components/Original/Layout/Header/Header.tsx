@@ -28,7 +28,10 @@ function Header() {
   if (!loading) {
     return (
       <div>
-        <Disclosure as="nav" className="bg-gray-100 dark:bg-gray-700 z-40">
+        <Disclosure
+          as="nav"
+          className="bg-gray-100 dark:bg-gray-700 z-40 shadow-sm"
+        >
           {({ open }) => (
             <>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

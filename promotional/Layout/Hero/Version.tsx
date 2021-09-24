@@ -4,7 +4,7 @@ import LatestVersion from "@/original/Changelog/Versions/HomeLatest";
 
 const Version = () => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 p-10 rounded-lg shadow-md hover:shadow-lg transition space-y-5">
+    <div className="p-10 rounded-lg space-y-5">
       <div>
         <XellxPartialBrand height="12" color="black dark:text-white" />
       </div>

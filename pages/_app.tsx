@@ -14,6 +14,7 @@ import SettingsSkeletonLayer from "@/shimmered/Settings/Layer";
 import LoadingBar from "react-top-loading-bar";
 import "../styles/three-dots.min.css";
 import componentDidMountMethod from "app/Methods/componentDidMount";
+import Footer from "@/original/Layout/Footer/Footer";
 class MyApp extends App {
   state = {
     isStatsLoading: false,
