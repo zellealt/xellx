@@ -72,7 +72,7 @@ model na_sessions {
 model na_users {
   id             Int       @id
   name           String
-  email          String
+  email          String?
   email_verified DateTime?
   image          String
   created_at     DateTime?

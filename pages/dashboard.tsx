@@ -8,6 +8,7 @@ import Card from "@/original/Selector/CardsLayout";
 import Title from "@/modules/Meta/Title";
 import Router from "next/router";
 import check_session from "@/lib/check_session";
+import NoServers from "@/original/Error/NoServers";
 
 interface discordGuildIndex {
   map(arg0: (guild: any) => JSX.Element): React.ReactNode;
@@ -65,6 +66,8 @@ export default function Index(props: { guilds: discordGuildIndex }) {
       );
     };
 
+    let servers: boolean = false;
+
     return (
       <>
         <Title title="Dashboard" />
@@ -88,8 +91,10 @@ export default function Index(props: { guilds: discordGuildIndex }) {
         >
           <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-10 md:justify-center">
             {guilds.map((guild) => {
+              servers = true;
               return <Card guild={guild} key={guild.id} />;
             })}
+            {servers ? "" : <NoServers />}
           </div>
         </PageHeader>
       </>
