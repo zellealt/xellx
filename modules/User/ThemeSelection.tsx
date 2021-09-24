@@ -10,7 +10,7 @@ interface SettingsProps {
 }
 
 const Themes = [
-  { id: "0", color: 0, name: "Use System Theme" },
+  { id: "0", color: 0, name: "System Theme" },
   { id: "dark", color: 0, name: "Night" },
   { id: "light", color: 0, name: "Day" },
 ];

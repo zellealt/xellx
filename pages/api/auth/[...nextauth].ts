@@ -67,6 +67,16 @@ const options = {
     },
   },
 
+  // database: {
+  //   type: "postgres",
+  //   host: "localhost",
+  //   port: 5432,
+  //   username: "postgres",
+  //   password: "StarShake11",
+  //   database: "zel_bot",
+  //   entityPrefix: "na_",
+  //   synchronize: false,
+  // },
   database: {
     type: "postgres",
     host: process.env.IP,

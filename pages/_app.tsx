@@ -13,6 +13,7 @@ import AuditLogSkeletonLayer from "@/shimmered/Server/AuditLog/Layer";
 import ServerSettingsSkeletonLayer from "@/shimmered/Server/Settings/Layer";
 import SettingsSkeletonLayer from "@/shimmered/Settings/Layer";
 import LoadingBar from "react-top-loading-bar";
+import "../styles/three-dots.min.css";
 
 function changeSystemDarkMode() {
   if (

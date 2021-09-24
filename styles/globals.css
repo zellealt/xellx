@@ -31,6 +31,23 @@
     transform: rotate(270deg);
   }
 }
+
+.dark-only {
+  display: none;
+}
+
+.dark .dark-only {
+  display: block;
+}
+
+.dark .light-only {
+  display: none;
+}
+
+.light-only {
+  display: block;
+}
+
 .path {
   stroke-dasharray: 187;
   stroke-dashoffset: 0;

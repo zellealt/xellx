@@ -31,7 +31,7 @@ const Text = () => {
 
         <div className="space-x-4 flex justify-center">
           <Button
-            text="Go to the Dashboard"
+            text="Sign In to Discord"
             onClick={() =>
               window.open("/login", "Data", "height=600,width=400")
             }
