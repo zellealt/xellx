@@ -1,6 +1,6 @@
 import React from "react";
 import discordGuild from "@/interfaces/discordGuild";
-import StickyRolesShimmer from "@/shimmeredModules/Server/StickyRoles";
+import StickyRolesShimmer from "@/shimmeredModules/Server/StickyRoles/StickyRoles";
 import Chip from "@/original/Forms/Chip";
 import CircleChip from "@/original/Forms/IconChip";
 import CustomSelect from "@/original/Forms/CustomSelect";

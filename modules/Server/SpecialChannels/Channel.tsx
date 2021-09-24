@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import Select from "../../../components/Original/Forms/Select";
 import { useSession } from "next-auth/client";
-import SpecialChannelsShimmer from "@/shimmeredModules/Server/SpecialChannels";
+import SpecialChannelsShimmer from "@/shimmeredModules/Server/SpecialChannels/SpecialChannels";
 import config from "../../../interfaces/config";
 import make_request from "@/lib/make_request";
 import ComponentDidUpdateMethod from "./ComponentDidUpdate";

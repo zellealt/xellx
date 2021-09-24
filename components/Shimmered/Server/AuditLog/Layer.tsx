@@ -17,7 +17,7 @@ const AuditLogLayer = () => {
         rightTitle={null}
       >
         <>
-          <SideNav currentPage="auditlog" padding={false}>
+          <SideNav currentPage="auditlog" padding={true}>
             <DashBoardGrid />
           </SideNav>
         </>

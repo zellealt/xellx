@@ -19,7 +19,10 @@ const Version = () => {
                 },
                 {
                   name: "Servers",
-                  listItem: ["Audit logs on the overview page has a new UI."],
+                  listItem: [
+                    "Audit logs on the overview & audit log page has a new UI.",
+                    "Added audit log shimmer to overview page.",
+                  ],
                 },
               ],
             },

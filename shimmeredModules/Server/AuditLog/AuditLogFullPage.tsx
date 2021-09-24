@@ -5,6 +5,7 @@ import timeSince from "@/generals/timeSince";
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import Log from "@/shimmered/Feeds/Log";
 
 const AuditLogFullPage = () => {
   let logs = [
@@ -78,40 +79,45 @@ const AuditLogFullPage = () => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [entryCount, setEntryCount] = useState(
-    Math.round(window.innerHeight / 100)
+    Math.round(window.innerHeight / 120)
   );
 
   useEffect(() => {
     window.addEventListener("resize", function () {
-      setEntryCount(Math.round(window.innerHeight / 100));
+      setEntryCount(Math.round(window.innerHeight / 120));
     });
   });
+
+  let mapCount: number = 0;
 
   return (
     <div>
       <div className="overflow-x-auto dark:bg-gray-900">
-        <div className="inline-block min-w-full overflow-hidden">
-          <table className="min-w-full leading-normal">
-            <Head />
-            <tbody>
-              {logs
-                .slice(
-                  currentPage * entryCount,
-                  currentPage * entryCount + entryCount
-                )
-                .map((dataEntry: any) => {
-                  return (
-                    <Entry
-                      key={dataEntry.id}
-                      action={dataEntry.action}
-                      date={dataEntry.date}
-                      user={dataEntry.user}
-                      id={dataEntry.id}
-                    />
-                  );
-                })}
-            </tbody>
-          </table>
+        <div>
+          {logs
+            .slice(
+              currentPage * entryCount,
+              currentPage * entryCount + entryCount
+            )
+            .map((dataEntry: any) => {
+              mapCount++;
+
+              let seperator: boolean = true;
+
+              if (mapCount === logs.length) {
+                seperator = false;
+              }
+
+              return (
+                <Log
+                  seperator={seperator}
+                  title={dataEntry.action}
+                  key={dataEntry.id}
+                  date={dataEntry.date}
+                  user={dataEntry.user}
+                />
+              );
+            })}
         </div>
       </div>
     </div>

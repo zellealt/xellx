@@ -1,5 +1,5 @@
 import React from "react";
-import Content from "./Contents/SpecialChannel";
+import Content from "../Contents/SpecialChannel";
 import Shimmer from "@/shimmered/Shimmer";
 
 const SpeicalChannels = () => {

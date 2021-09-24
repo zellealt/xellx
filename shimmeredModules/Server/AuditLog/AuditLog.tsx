@@ -7,41 +7,71 @@ import ReactPaginate from "react-paginate";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import router from "next/router";
+import Log from "@/shimmered/Feeds/Log";
 
-const AuditLog = (props: { guild: discordGuild }) => {
-  let logs = props.guild.logs;
-  logs.sort(function (
-    a: { date: string | number | Date },
-    b: { date: string | number | Date }
-  ) {
-    const c: any = new Date(a.date);
-    const d: any = new Date(b.date);
-    return d - c;
-  });
+const AuditLog = () => {
+  let logs = [
+    {
+      id: 1241739169,
+      user: "Shimmered",
+      action: "This is a",
+      date: "9 minutes ago",
+    },
+    {
+      id: 1141739169,
+      user: "Shimmered",
+      action: "This is a shimmered action 12346",
+      date: "6 seconds ago",
+    },
+    {
+      id: 9741739169,
+      user: "Shimmered",
+      action: "This is a shimmered",
+      date: "2 months ago",
+    },
+    {
+      id: 8741739169,
+      user: "Shimmered",
+      action: "This is a shimm5",
+      date: "7 years ago",
+    },
+    {
+      id: 7741739169,
+      user: "Shimmered",
+      action: "This is a shimmered action",
+      date: "3 hoursago",
+    },
+  ];
 
   const [currentPage, setCurrentPage] = useState(0);
+
+  let mapCount: number = 0;
 
   return (
     <div>
       <div className="overflow-x-auto dark:bg-gray-900">
-        <div className="inline-block min-w-full overflow-hidden">
-          <table className="min-w-full leading-normal">
-            <Head />
-            <tbody>
-              {logs
-                .slice(currentPage * 5, currentPage * 5 + 5)
-                .map((dataEntry: any) => {
-                  return (
-                    <Entry
-                      action={dataEntry.action}
-                      date={timeSince(new Date(dataEntry.date))}
-                      user={dataEntry.user}
-                      id={dataEntry.id}
-                    />
-                  );
-                })}
-            </tbody>
-          </table>
+        <div className="p-5">
+          {logs
+            .slice(currentPage * 5, currentPage * 5 + 5)
+            .map((dataEntry: any) => {
+              mapCount++;
+
+              let seperator: boolean = true;
+
+              if (mapCount === logs.length) {
+                seperator = false;
+              }
+
+              return (
+                <Log
+                  seperator={seperator}
+                  title={dataEntry.action}
+                  key={dataEntry.id}
+                  date={dataEntry.date}
+                  user={dataEntry.user}
+                />
+              );
+            })}
           <div className="flex justify-center">
             <ReactPaginate
               breakLabel={"..."}
