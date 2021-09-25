@@ -4,6 +4,7 @@ import get_commands_data from "./get_commands_data";
 import get_logs from "./get_logs";
 import generate_server_data from "./generate_server_data";
 import make_request from "./make_request";
+import FilterMessagableChannel from "@/hooks/FilterMessagableChannel";
 
 const fetch_manageable_guild = async (guild_id: bigint, token: string) => {
   try {
@@ -72,12 +73,19 @@ const fetch_manageable_guild = async (guild_id: bigint, token: string) => {
 
     resAdvJson["logs"] = await logs;
 
-    const channelsJson = await make_request(
+    let channelsJson = await make_request(
       `https://discord.com/api/guilds/${guild_id}/channels`,
       {
         Authorization: "Bot " + process.env.DISCORD_BOT_TOKEN,
       }
     );
+
+    channelsJson = channelsJson.filter((entry: any) =>
+      FilterMessagableChannel(entry.type)
+    );
+
+    console.log(channelsJson);
+
     resAdvJson["channels"] = channelsJson;
 
     return resAdvJson;

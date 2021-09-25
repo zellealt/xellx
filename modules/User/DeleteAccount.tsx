@@ -24,26 +24,16 @@ const DeleteAccount = () => {
         Authorization: session?.user.accessToken,
       })
         .then(function (response) {
-          console.log(response.status);
-          if (response.status !== "green") {
-            console.log(
-              "Looks like there was a problem. Status Code: " + response.status
-            );
-            return;
-          }
+          eraseCookie("next-auth.callback-url");
+          eraseCookie("next-auth.csrf-token");
+          eraseCookie("next-auth.session-token");
 
-          setTimeout(function () {
-            eraseCookie("next-auth.callback-url");
-            eraseCookie("next-auth.csrf-token");
-            eraseCookie("next-auth.session-token");
+          localStorage.clear();
+          sessionStorage.clear();
 
-            localStorage.clear();
-            sessionStorage.clear();
-
-            router.push({
-              pathname: "/",
-            });
-          }, 1);
+          router.push({
+            pathname: "/",
+          });
         })
         .catch(function (err) {
           console.log("Fetch Error :-S", err);

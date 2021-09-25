@@ -82,7 +82,7 @@ export default async function update_audit_log_channel(
     },
   });
 
-  const markdownMessage = `Updated the channel to **${is_channel_in_guild}**`;
+  const markdownMessage = `Updated the audit log channel to **${is_channel_in_guild}**`;
   const message = `Updated the channel to ${is_channel_in_guild}`;
 
   // @ts-ignore

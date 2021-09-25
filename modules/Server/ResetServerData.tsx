@@ -25,21 +25,14 @@ const ResetServerData = (props: { guild: discordGuild }) => {
         }
       )
         .then(function (response) {
-          if (response.status !== 200) {
-            console.log(
-              "Looks like there was a problem. Status Code: " + response.status
-            );
-            return;
-          }
-
+          localStorage.clear();
+          sessionStorage.clear();
           setTimeout(function () {
-            response.json().then(function () {
-              router.push({
-                pathname: "./overview",
-                query: { ...router.query },
-              });
+            router.push({
+              pathname: "./overview",
+              query: { ...router.query },
             });
-          }, 5000);
+          }, 1000);
         })
         .catch(function (err) {
           console.log("Fetch Error :-S", err);

@@ -12,11 +12,21 @@ const generate_server_data = async (guild_id: BigInt) => {
     },
   });
 
+  const commandsQuery = await prisma.commands.create({
+    data: {
+      guild_id: BigInt(guild_id.toString()),
+      ban: true,
+      kick: true,
+      warn: true,
+      info: true,
+    },
+  });
+
   await make_log(
     "Created essential database querys",
     "Xellx Configurator",
     BigInt(guild_id.toString()),
-    "/xellx0-nav.svg",
+    "/default.png",
     "updated_channel"
   );
 };

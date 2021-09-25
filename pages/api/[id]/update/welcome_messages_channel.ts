@@ -79,7 +79,7 @@ export default async function update_welcome_messages_channel(
     },
   });
 
-  const markdownMessage = `Updated the channel to **${is_channel_in_guild}**`;
+  const markdownMessage = `Updated the welcome messages channel to **${is_channel_in_guild}**`;
   const message = `Updated the channel to ${is_channel_in_guild}`;
 
   // @ts-ignore

@@ -26,7 +26,7 @@ export default async function remove_sticky_role(
   if (query === null) {
     return res.status(406).json({
       message: "Server or user does not exist in the database",
-      status: "red",
+      status: "error",
     });
   }
 
@@ -41,14 +41,14 @@ export default async function remove_sticky_role(
   if (guild === false) {
     return res.status(401).json({
       message: "You lack permission to edit this server",
-      status: "red",
+      status: "error",
     });
   }
 
   if (guild === "rate_limited") {
     return res
       .status(401)
-      .json({ message: "You are being rate limited", status: "red" });
+      .json({ message: "You are being rate limited", status: "error" });
   }
 
   // alright now update the stuff
@@ -58,6 +58,12 @@ export default async function remove_sticky_role(
       guild_id: BigInt(id),
     },
   });
+
+  // const deleteCommands = await prisma.commands.delete({
+  //   where: {
+  //     guild_id: BigInt(id),
+  //   },
+  // });
 
   const logsConfig = await prisma.logs.deleteMany({
     where: {
@@ -81,6 +87,6 @@ export default async function remove_sticky_role(
 
   res.status(200).json({
     message: message,
-    status: "green",
+    status: "success",
   });
 }

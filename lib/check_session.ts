@@ -1,4 +1,3 @@
-import not_sessioned from "./not_sessioned";
 import React from "react";
 import router from "next/router";
 
