@@ -21,6 +21,7 @@ const make_log = async (
       date: currentDateTime,
       icon: icon || "",
       image: image || "",
+      type: "AUDIT",
     },
   });
 

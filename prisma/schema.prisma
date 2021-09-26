@@ -27,6 +27,11 @@ model users {
   @@unique([user_id, guild_id])
 }
 
+enum log_type {
+  PUNISHMENT
+  AUDIT
+}
+
 model commands {
   guild_id BigInt  @unique
   ban      Boolean
@@ -43,6 +48,7 @@ model logs {
   date     DateTime @default(now())
   icon     String
   image    String
+  type     log_type
 }
 
 model na_accounts {

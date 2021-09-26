@@ -27,10 +27,10 @@ const CTA = () => {
           </div>
         </a>
         <h2 className="mb-4 font-sans text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:leading-none">
-          What are you waiting for?
+          what are you waiting for?
         </h2>
         <p className="text-base text-gray-700 dark:text-gray-200 md:text-lg sm:px-4">
-          Simply click the button and authorize!
+          simply click the button and authorize!
         </p>
         <hr className="w-full my-8 border-gray-300 dark:border-gray-700" />
         <SignInToDiscord />
