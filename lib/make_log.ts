@@ -16,12 +16,12 @@ const make_log = async (
     data: {
       id: Math.floor(Math.random() * 9999999999 + 1),
       guild_id: BigInt(guild_id),
-      user: name || "",
-      action: action,
-      date: currentDateTime,
+      user_tag: name || "",
+      message: action,
+      date_created: currentDateTime,
       icon: icon || "",
-      image: image || "",
-      type: "AUDIT",
+      user_avatar: image || "",
+      type: "DASHBOARD",
     },
   });
 

@@ -70,13 +70,13 @@ const AuditLogFullPage = (props: { guild: discordGuild }) => {
               return (
                 <Log
                   icon={Icon}
-                  avatar={dataEntry.image}
-                  user={dataEntry.user}
+                  avatar={dataEntry.user_avatar}
+                  user={dataEntry.user_tag}
                   seperator={seperator}
                   color="bg-indigo-400"
                   key={dataEntry.key}
-                  title={<Markdown>{dataEntry.action}</Markdown>}
-                  date={timeSince(new Date(dataEntry.date))}
+                  title={<Markdown>{dataEntry.message}</Markdown>}
+                  date={timeSince(new Date(dataEntry.date_created))}
                 />
               );
             })}

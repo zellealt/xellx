@@ -17,19 +17,10 @@ model config {
   // audit_log                Boolean
 }
 
-model users {
-  user_id  BigInt
-  guild_id BigInt
-  bans     Int
-  kicks    Int
-  warns    Int
-
-  @@unique([user_id, guild_id])
-}
-
 enum log_type {
   PUNISHMENT
-  AUDIT
+  DASHBOARD
+  DISCORD
 }
 
 model commands {
@@ -41,14 +32,14 @@ model commands {
 }
 
 model logs {
-  id       BigInt   @id
-  guild_id BigInt
-  user     String
-  action   String
-  date     DateTime @default(now())
-  icon     String
-  image    String
-  type     log_type
+  id           BigInt   @id
+  guild_id     BigInt
+  user_tag     String
+  message      String
+  date_created DateTime @default(now())
+  icon         String
+  user_avatar  String
+  type         log_type
 }
 
 model na_accounts {
