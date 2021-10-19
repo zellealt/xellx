@@ -2,5 +2,5 @@
 
 ### A simple guide & easy-to-use template to deploy Next.js with Discord OAuth to Vercel
 
-#### Last commit over 14 days ago?
-Don't worry I have been busy for the last couple weeks and just started work on this again and hopefully an experimental version should be released in November with intrusctions on how to configure the database and .env files
+#### Is the project active?
+I had a 2 week break on the project and from bad timing it happened that was when I was implementing the new API so I am working on it a huge commit should be coming soon.
