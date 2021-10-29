@@ -7,3 +7,6 @@ I had a 2 week break on the project and from bad timing it happened that was whe
 
 #### Edit
 Huge update coming **very** soon, new status page, new server selector page, entire new API, fast response times, loads of bugs fixed, refactored code, new server sidebar, websockets, and more. (the new update may not include all features as I am trying to release as soon as possible)
+
+#### Another Edit
+Sorry, I have not been able to publish the new version as I have still not fixed the API and am now working on a UI revamp as the previous code is messy. I apolgize for the wait, please be patient I am only one person with not much intrest in the project anymore.
