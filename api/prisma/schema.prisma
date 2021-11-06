@@ -1,0 +1,60 @@
+// schema.prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model config {
+  guild_id                 BigInt   @unique
+  sticky_roles             BigInt[]
+  auto_role                BigInt
+  audit_log_channel        BigInt
+  welcome_messages_channel BigInt
+  // audit_log                Boolean
+}
+
+enum log_type {
+  PUNISHMENT
+  DASHBOARD
+  DISCORD
+}
+
+model commands {
+  guild_id BigInt  @unique
+  ban      Boolean
+  kick     Boolean
+  warn     Boolean
+  info     Boolean
+}
+
+model logs {
+  id           BigInt   @id
+  guild_id     BigInt
+  user_tag     String
+  message      String
+  date_created DateTime @default(now())
+  icon         String
+  user_avatar  String
+  type         log_type
+  data         Json?
+}
+
+model auth_users {
+  discordId     String @unique
+  username      String
+  discriminator String
+  avatar        String
+  accessToken   String
+  guilds        Json[]
+}
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
+}
