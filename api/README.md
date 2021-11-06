@@ -1,4 +1,4 @@
-![Xellx Logo](https://github.com/zelxd/xellx/blob/mui/logo.pngs?raw=true)
+![Xellx Logo](https://github.com/zelxd/xellx/blob/mui/logo.png?raw=true)
 
 # Xellx API
 
