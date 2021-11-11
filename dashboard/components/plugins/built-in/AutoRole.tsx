@@ -66,12 +66,15 @@ const AutoRole = () => {
   };
 
   return (
-    <Stack alignItems="center" spacing={2}>
+    <Stack justifyContent="flex-start" alignItems="flex-start" spacing={2}>
       <IconButton
         onClick={() => setPage("plugins")}
         color="primary"
         aria-label="go back"
-        component="span"
+        component="div"
+        sx={{
+          bgcolor: "rgba(130, 0, 244, 0.055)",
+        }}
       >
         <ArrowBackIcon />
       </IconButton>

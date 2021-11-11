@@ -1,7 +1,7 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Typography } from "@mui/material";
+import { Collapse, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Stack from "@mui/material/Stack";
@@ -10,8 +10,47 @@ import { GuildContext } from "../../../contexts/GuildContext";
 import SaveIcon from "@mui/icons-material/Save";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useSnackbar } from "notistack";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import { TransitionGroup } from "react-transition-group";
+import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
+import Zoom from "@mui/material/Zoom";
+
+const audits = [
+  { name: "Deleted Messages", catagory: "Messages" },
+  { name: "Edited Messages", catagory: "Messages" },
+  { name: "User Bans", catagory: "Punishments" },
+  { name: "User Unbans", catagory: "Punishments" },
+  { name: "User Kicks", catagory: "Punishments" },
+  { name: "Channel Create", catagory: "Channels" },
+  { name: "Channel Delete", catagory: "Channels" },
+  { name: "Channel Pins Update", catagory: "Channels" },
+  { name: "Channel Update", catagory: "Channels" },
+  { name: "Emoji Create", catagory: "Emoji" },
+  { name: "Emoji Delete", catagory: "Emoji" },
+  { name: "Emoji Update", catagory: "Emoji" },
+  { name: "Nickname Update", catagory: "User" },
+  { name: "Activity Update", catagory: "User" },
+  { name: "Roles Update", catagory: "User" },
+  { name: "Username Update", catagory: "User" },
+  { name: "Invite Create", catagory: "Invite" },
+  { name: "Invite Delete", catagory: "Invite" },
+];
 
 const AuditLog = () => {
+  let categorys = audits.map((x) => x?.catagory);
+  categorys = categorys.filter(function (item, pos) {
+    return categorys.indexOf(item) == pos;
+  });
+
+  const [activeCategorys, setActiveCategorys] = React.useState(
+    categorys.map((category_name) => ({
+      name: category_name,
+      active: false,
+    }))
+  );
+
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [role, setRole] = React.useState<any>(null);
   const [fetching, setFetching] = React.useState<boolean>(false);
@@ -32,7 +71,6 @@ const AuditLog = () => {
 
   React.useEffect(() => {
     const role = guild?.roles?.find((x) => x.id === guild?.plugins?.auto_role);
-    console.log({ label: role! ? role.name : "", id: role! ? role.id : 0 });
     setRole({ label: role! ? role.name : "", id: role! ? role.id : 0 });
   }, []);
 
@@ -53,7 +91,6 @@ const AuditLog = () => {
       method: "POST",
       credentials: "include",
     }).then((res) => {
-      console.log(res);
       if (res.ok) {
         const modifiedGuild = guild!;
         modifiedGuild.plugins.auto_role = roleId;
@@ -67,12 +104,15 @@ const AuditLog = () => {
   };
 
   return (
-    <Stack alignItems="center" spacing={2}>
+    <Stack justifyContent="flex-start" alignItems="flex-start" spacing={1}>
       <IconButton
+        sx={{
+          bgcolor: "rgba(130, 0, 244, 0.055)",
+        }}
         onClick={() => setPage("plugins")}
         color="primary"
         aria-label="go back"
-        component="span"
+        component="div"
       >
         <ArrowBackIcon />
       </IconButton>
@@ -83,6 +123,65 @@ const AuditLog = () => {
       <Typography variant="subtitle1" component="div">
         Audit all significant actions to the logs
       </Typography>
+
+      <Stack spacing={1}>
+        {activeCategorys.map((category) => (
+          <div>
+            <Stack direction="row" alignItems="center" gap={1}>
+              <IconButton
+                onClick={() => {
+                  let localActiveCategorys = activeCategorys.slice();
+                  const i = localActiveCategorys.findIndex(
+                    (x) => x.name === category.name
+                  );
+                  localActiveCategorys[i].active =
+                    localActiveCategorys[i].active != true;
+
+                  setActiveCategorys(localActiveCategorys);
+                }}
+                sx={{
+                  width: 40,
+                  height: 40,
+                }}
+                aria-label="delete"
+              >
+                <Zoom
+                  in={category.active}
+                  style={{ position: "absolute" }}
+                  {...(category.active ? { timeout: 500 } : {})}
+                >
+                  <ArrowDropDown />
+                </Zoom>
+                <Zoom
+                  in={!category.active}
+                  style={{ position: "absolute" }}
+                  {...(!category.active ? { timeout: 500 } : {})}
+                >
+                  <ArrowDropUp />
+                </Zoom>
+              </IconButton>
+              {category.name}
+            </Stack>
+            <TransitionGroup>
+              {category.active && (
+                <Collapse key={category.name}>
+                  {audits.map(
+                    (audit) =>
+                      category.name === audit.catagory && (
+                        <FormGroup>
+                          <FormControlLabel
+                            control={<Switch defaultChecked />}
+                            label={audit.name}
+                          />
+                        </FormGroup>
+                      )
+                  )}
+                </Collapse>
+              )}
+            </TransitionGroup>
+          </div>
+        ))}
+      </Stack>
 
       <LoadingButton
         color="primary"
