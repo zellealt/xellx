@@ -4,6 +4,11 @@
 
 ### An express built API using prisma for Xellx Discord Bot. The package manager is NPM.
 
+## Prerequisites
+
+- [nodemon](https://www.npmjs.com/package/nodemon) - `npm i nodemon -g`
+- [tsc](https://www.npmjs.com/package/tsc) - `npm i tsc -g`
+
 ## Setup
 
 1. Install Dependencies

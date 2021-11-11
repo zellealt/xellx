@@ -1,12 +1,12 @@
-![Xellx Logo](https://github.com/zelxd/xellx/blob/mui/logo.png?raw=true)
+![Xellx Logo](https://github.com/zelxd/xellx/blob/mui/logo.png)
 
 # Xellx
 
-### A Discord.JS Bot built with Typescript connecting to a PostgreSQL Database using prisma + a React NextJS 12 Dashboard + an express API.
+### A new bot for a new generation. Setup yourself in less than 5 minutes.
 
 ## Important Notes
 
-Xellx is **NOT** for production and will not be for a while. It is in very early development stages. Expect bugs. You will need to manually setup callback URIs in the Discord Dev Portal (/api/auth/discord/redirect). To authenticate with the dashboard go to the API HOST + `/api/auth/discord`. If you setup the API `.env` correctly it will work. Otherwise submit a bug request.
+Xellx is not for production and will not be for a while. You will need to setup callback URIs in the Discord Dev Portal (/api/auth/discord/redirect). To authenticate with the dashboard go to the API HOST + `/api/auth/discord`. If you setup the API `.env` correctly it will work. Otherwise submit a bug request.
 
 ## Submitting Issues
 
