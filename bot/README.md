@@ -6,8 +6,8 @@
 
 ## Prerequisites
 
-- [nodemon](https://www.npmjs.com/package/nodemon)
-- [ts-node](https://www.npmjs.com/package/ts-node)
+- [nodemon](https://www.npmjs.com/package/nodemon) - `npm i nodemon -g`
+- [ts-node](https://www.npmjs.com/package/ts-node) - `npm i ts-node -g`
 
 ## Setup
 
