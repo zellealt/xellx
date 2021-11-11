@@ -31,7 +31,7 @@ const AuditLog = () => {
   );
 
   React.useEffect(() => {
-    const role = guild?.roles?.find((x) => x.id === guild?.config?.auto_role);
+    const role = guild?.roles?.find((x) => x.id === guild?.plugins?.auto_role);
     console.log({ label: role! ? role.name : "", id: role! ? role.id : 0 });
     setRole({ label: role! ? role.name : "", id: role! ? role.id : 0 });
   }, []);
@@ -56,7 +56,7 @@ const AuditLog = () => {
       console.log(res);
       if (res.ok) {
         const modifiedGuild = guild!;
-        modifiedGuild.config.auto_role = roleId;
+        modifiedGuild.plugins.auto_role = roleId;
         setGuild(modifiedGuild);
         enqueueSnackbar("Successfully updated", { variant: "success" });
       } else {
@@ -83,8 +83,6 @@ const AuditLog = () => {
       <Typography variant="subtitle1" component="div">
         Audit all significant actions to the logs
       </Typography>
-
-        
 
       <LoadingButton
         color="primary"
