@@ -5,13 +5,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { SessionContext } from "../../contexts/SessionContext";
-import formatGuildIcon from "../../client-lib/formatGuildIcon";
+import { SessionContext } from "../contexts/SessionContext";
+import formatGuildIcon from "../client-lib/formatGuildIcon";
 import { Box } from "@mui/material";
 import { ServerIcon } from "./ServerIcon";
-import randomMaterialColour from "../../client-lib/randomMaterialColour";
+import randomMaterialColour from "../client-lib/randomMaterialColour";
 import Link from "next/link";
-import { Guild } from "../../types/Types";
+import { Guild } from "../types/Types";
 
 export const ServerCard = (props: { guild: Guild; section?: any }) => {
   const { session, setSession } = React.useContext(SessionContext);

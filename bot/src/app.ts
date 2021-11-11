@@ -1,8 +1,6 @@
-import DiscordJS, { Intents, Interaction } from "discord.js";
+import DiscordJS, { Intents } from "discord.js";
 import WOKCommands from "wokcommands";
 import path from "path";
-import dotenv from "dotenv";
-dotenv.config();
 
 const client = new DiscordJS.Client({
   intents: [
@@ -18,8 +16,6 @@ const client = new DiscordJS.Client({
 });
 
 client.on("ready", () => {
-  console.log("the bot is ready");
-
   new WOKCommands(client, {
     commandsDir: path.join(__dirname, "commands"),
     featuresDir: path.join(__dirname, "features"),

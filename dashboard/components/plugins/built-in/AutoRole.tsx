@@ -5,8 +5,8 @@ import { Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Stack from "@mui/material/Stack";
-import { ServerManageContext } from "../../../../contexts/ServerManageContext";
-import { GuildContext } from "../../../../contexts/GuildContext";
+import { ServerManageContext } from "../../../contexts/ServerManageContext";
+import { GuildContext } from "../../../contexts/GuildContext";
 import SaveIcon from "@mui/icons-material/Save";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useSnackbar } from "notistack";
@@ -31,7 +31,7 @@ const AutoRole = () => {
   );
 
   React.useEffect(() => {
-    const role = guild?.roles?.find((x) => x.id === guild?.config?.auto_role);
+    const role = guild?.roles?.find((x) => x.id === guild?.plugins?.auto_role);
     console.log({ label: role! ? role.name : "", id: role! ? role.id : 0 });
     setRole({ label: role! ? role.name : "", id: role! ? role.id : 0 });
   }, []);
@@ -53,10 +53,9 @@ const AutoRole = () => {
       method: "POST",
       credentials: "include",
     }).then((res) => {
-      console.log(res);
       if (res.ok) {
         const modifiedGuild = guild!;
-        modifiedGuild.config.auto_role = roleId;
+        modifiedGuild.plugins.auto_role = roleId;
         setGuild(modifiedGuild);
         enqueueSnackbar("Successfully updated", { variant: "success" });
       } else {

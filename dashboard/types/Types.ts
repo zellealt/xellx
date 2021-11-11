@@ -9,10 +9,12 @@ export type Role = {
 
 export type Config = {
   guild_id: number;
+};
+
+export type Plugins = {
+  guild_id: number;
   sticky_roles: number[];
   auto_role: number;
-  audit_log_channel: number;
-  member_messages_channel: number;
 };
 
 type IObjectKeys = {
@@ -37,6 +39,7 @@ export type Guild = {
   approximate_presence_count: number;
   config: Config;
   commands: Commands;
+  plugins: Plugins;
 };
 
 export type Log = {

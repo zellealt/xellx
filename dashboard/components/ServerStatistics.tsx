@@ -5,12 +5,12 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { SessionContext } from "../../contexts/SessionContext";
-import formatGuildIcon from "../../client-lib/formatGuildIcon";
+import { SessionContext } from "../contexts/SessionContext";
+import formatGuildIcon from "../client-lib/formatGuildIcon";
 import { Box, Grid } from "@mui/material";
-import randomMaterialColour from "../../client-lib/randomMaterialColour";
+import randomMaterialColour from "../client-lib/randomMaterialColour";
 import Link from "next/link";
-import { Guild } from "../../types/Types";
+import { Guild } from "../types/Types";
 import { ServerCard } from "./ServerCard";
 import StatCard from "./statistics/Card";
 

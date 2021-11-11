@@ -1,12 +1,9 @@
-import type { NextPage } from "next";
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useRouter } from "next/router";
 import { GuildContext } from "../contexts/GuildContext";
-import { ServerAuditlog } from "./components/ServerAuditlog";
-import { ServerStatistics } from "./components/ServerStatistics";
-import { ServerPlugins } from "./components/ServerPlugins";
+import { ServerAuditlog } from "../components/ServerAuditlog";
+import { ServerStatistics } from "../components/ServerStatistics";
+import { ServerPlugins } from "../components/ServerPlugins";
 
 const Overview = () => {
   const { guild, setGuild } = React.useContext(GuildContext);

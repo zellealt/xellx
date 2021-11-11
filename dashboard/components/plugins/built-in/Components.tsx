@@ -3,8 +3,8 @@ import PluginName from "../../PluginName";
 import AutoRole from "./AutoRole";
 import * as React from "react";
 import Grid from "@mui/material/Grid";
-import { ServerManageContext } from "../../../../contexts/ServerManageContext";
-import { GuildContext } from "../../../../contexts/GuildContext";
+import { ServerManageContext } from "../../../contexts/ServerManageContext";
+import { GuildContext } from "../../../contexts/GuildContext";
 
 const BuiltIn = () => {
   const { page, setPage } = React.useContext(ServerManageContext);

@@ -32,6 +32,12 @@ yarn-error.log*
 .env.production.local
 .env.development
 
+# ts
+/dist/
+
+# prisma migrations
+/prisma/migrations/
+
 # vercel
 .vercel
 

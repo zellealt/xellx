@@ -1,12 +1,12 @@
 import * as React from "react";
-import { SessionContext } from "../../contexts/SessionContext";
+import { SessionContext } from "../contexts/SessionContext";
 import ReactTimeAgo from "react-time-ago";
 import { Avatar } from "@mui/material";
 import { Box, FormControlLabel, FormGroup, Switch } from "@mui/material";
-import randomMaterialColour from "../../client-lib/randomMaterialColour";
-import { Guild, Role } from "../../types/Types";
+import randomMaterialColour from "../client-lib/randomMaterialColour";
+import { Guild, Role } from "../types/Types";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import auditLogTypeIcon from "../../builders/auditLogTypeIcon";
+import auditLogTypeIcon from "../builders/auditLogTypeIcon";
 
 const capitalize = (s: string | any[]) =>
   (s && s[0].toUpperCase() + s.slice(1)) || "";
