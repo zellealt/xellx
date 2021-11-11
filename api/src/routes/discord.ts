@@ -31,38 +31,14 @@ router.post("/server/:id/set/auto-role", async (req, res) => {
   if (guild === false)
     return res.status(500).send({ msg: "Internal Server Error" });
 
-  return res.status(200).json({ guild });
-});
+  const query = await autoRole(
+    req.query.roleId.toString(),
+    BigInt(req.params.id)
+  );
 
-router.post("/server/:id/set/auto-role", async (req, res) => {
-  if (req.query?.roleId) {
-    const check = await checkSetGuild(req, res);
-    if (check.status === false) return check.returned;
-
-    const createRecord = await autoRole(
-      req?.query?.roleId?.toString(),
-      req?.params?.id?.toString()
-    );
-
-    if (createRecord === false) {
-      return res.status(500).send({ msg: "Internal Server Error" });
-    }
-
-    const user: any = req?.user;
-    const tag: string = user?.username + "#" + user?.discriminator;
-
-    makeLog(
-      `Auto role changed to ${req?.query?.roleId?.toString()}`,
-      tag,
-      BigInt(req?.params?.id),
-      user.avatar,
-      "update_auto_role"
-    );
-
-    return res.status(200).json({ msg: "OK" });
-  } else {
-    return res.status(400).send({ msg: "Bad Request" });
-  }
+  if (query === true) return res.status(200).send({ msg: "OK" });
+  if (query === false)
+    return res.status(500).send({ msg: "Internal Server Error" });
 });
 
 export default router;
