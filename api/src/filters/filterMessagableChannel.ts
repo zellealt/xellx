@@ -1,6 +1,6 @@
 import ChannelTypes from "../types/discordChannel";
 
-const FilterMessagableChannel = (channelType: string | number) => {
+const filterMessagableChannel = (channelType: string | number) => {
   let channelTypeString;
 
   if (typeof channelType === "string") {
@@ -18,4 +18,4 @@ const FilterMessagableChannel = (channelType: string | number) => {
   }
 };
 
-export default FilterMessagableChannel;
+export default filterMessagableChannel;

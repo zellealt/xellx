@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import fetchUserGuilds from "../fetch/userGuilds";
+import fetchUserGuilds from "../discord-fetching/raw/guilds";
 
 const router = express.Router();
 

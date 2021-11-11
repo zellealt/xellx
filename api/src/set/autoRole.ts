@@ -5,7 +5,7 @@ const autoRole = async (
   guildId: bigint | number | string
 ) => {
   try {
-    const updateAutoRole = await prisma.config.upsert({
+    const updateAutoRole = await prisma.plugins.upsert({
       where: {
         guild_id: BigInt(guildId),
       },
@@ -14,16 +14,12 @@ const autoRole = async (
       },
       create: {
         guild_id: BigInt(guildId),
-        sticky_roles: [],
         auto_role: BigInt(id),
-        audit_log_channel: 0,
-        welcome_messages_channel: 0,
       },
     });
 
     return true;
   } catch (e) {
-    console.log(e);
     return false;
   }
 };

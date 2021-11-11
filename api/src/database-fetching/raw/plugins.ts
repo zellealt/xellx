@@ -1,7 +1,7 @@
-import prisma from "../lib/prisma";
+import prisma from "../../lib/prisma";
 
-const logs = async (guildId: bigint) => {
-  const query = await prisma.logs.findMany({
+const getPluginsData = async (guildId: bigint) => {
+  const query = await prisma.plugins.findUnique({
     where: {
       guild_id: guildId,
     },
@@ -23,4 +23,4 @@ const logs = async (guildId: bigint) => {
   return queryJson;
 };
 
-export default logs;
+export default getPluginsData;

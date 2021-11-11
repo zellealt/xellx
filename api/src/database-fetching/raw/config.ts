@@ -1,4 +1,4 @@
-import prisma from "../lib/prisma";
+import prisma from "../../lib/prisma";
 
 const getConfigData = async (guildId: bigint) => {
   const query = await prisma.config.findUnique({

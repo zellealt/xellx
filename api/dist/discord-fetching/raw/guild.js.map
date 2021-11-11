@@ -1,0 +1,1 @@
+{"version":3,"file":"guild.js","sourceRoot":"","sources":["../../../src/discord-fetching/raw/guild.ts"],"names":[],"mappings":";;;;;;;;;;;;;;AAAA,8DAAgC;AAEhC,MAAM,cAAc,GAAG,CAAO,OAA0C,EAAE,EAAE;IAC1E,OAAA,MAAM,IAAA,qBAAK,EAAC,kCAAkC,OAAO,mBAAmB,EAAE;QACxE,OAAO,EAAE;YACP,aAAa,EAAE,MAAM,GAAG,OAAO,CAAC,GAAG,CAAC,SAAS;SAC9C;KACF,CAAC,CAAA;EAAA,CAAC;AAEL,kBAAe,cAAc,CAAC"}

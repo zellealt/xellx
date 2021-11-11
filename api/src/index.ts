@@ -1,4 +1,3 @@
-require("dotenv").config();
 import prisma from "./lib/prisma";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 import "./strategies/discord";

@@ -8,13 +8,15 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model config {
-  guild_id                 BigInt   @unique
+model plugins {
+  guild_id BigInt @unique
+  audit_log Json?
   sticky_roles             BigInt[]
   auto_role                BigInt
-  audit_log_channel        BigInt
-  welcome_messages_channel BigInt
-  // audit_log                Boolean
+}
+
+model config {
+  guild_id                 BigInt   @unique
 }
 
 enum log_type {
