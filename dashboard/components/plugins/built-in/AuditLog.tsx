@@ -69,13 +69,6 @@ const AuditLog = () => {
     id: number;
   }[] = [];
 
-  guild?.roles?.map((role) =>
-    selection.push({
-      label: role.name,
-      id: role.id,
-    })
-  );
-
   React.useEffect(() => {
     if (guild?.plugins?.audit_log !== null)
       setAudits(JSON.parse(guild?.plugins?.audit_log));

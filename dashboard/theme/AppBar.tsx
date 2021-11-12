@@ -21,7 +21,7 @@ const lightColor = "rgba(255, 255, 255, 0.7)";
 
 interface AppBarProps {
   onDrawerToggle: () => void;
-  title: string;
+  title: any;
   children: any;
 }
 

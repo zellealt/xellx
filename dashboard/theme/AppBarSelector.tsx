@@ -4,6 +4,7 @@ import Selector from "./appbars-content/Selector";
 import Server from "./appbars-content/Server";
 import AppBar from "./AppBar";
 import { GuildContext } from "../contexts/GuildContext";
+import { Skeleton } from "@mui/material";
 
 interface AppBarSelectorProps {
   onDrawerToggle: () => void;
@@ -14,10 +15,13 @@ export default function AppBarSelector(props: AppBarSelectorProps) {
 
   const { guild, setGuild } = React.useContext(GuildContext);
 
-  let appBar = { title: "Error", page: "none" };
+  let appBar: { title: any; page: any } = { title: "Error", page: "none" };
 
   if (router.asPath.includes("manage"))
-    appBar = { title: guild?.name || "Managing Server", page: "server" };
+    appBar = {
+      title: guild?.name || <Skeleton width={300} animation="wave" />,
+      page: "server",
+    };
   if (router.asPath.includes("selector"))
     appBar = { title: "Selector", page: "selector" };
 
