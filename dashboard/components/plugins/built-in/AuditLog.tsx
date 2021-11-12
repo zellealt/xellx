@@ -124,7 +124,7 @@ const AuditLog = () => {
 
       <Stack spacing={1}>
         {activeCategorys.map((category) => (
-          <div>
+          <div key={category.name}>
             <Stack direction="row" alignItems="center" gap={1}>
               <IconButton
                 onClick={() => {

@@ -16,6 +16,7 @@ const Selector: NextPage = () => {
         {session?.guilds.map((guild) => {
           return (
             <Grid
+              key={guild?.name}
               sx={{
                 width: { xs: "100%", md: "50%", lg: "33%", xl: "25%" },
               }}

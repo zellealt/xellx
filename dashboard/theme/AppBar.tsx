@@ -3,7 +3,7 @@ import MUIAppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import HelpIcon from "@mui/icons-material/Help";
+import GoBackIcon from "@mui/icons-material/ArrowBack";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -29,6 +29,8 @@ export default function AppBar(props: AppBarProps) {
   const { onDrawerToggle, title } = props;
   const { session, setSession } = React.useContext(SessionContext);
 
+  const router = useRouter();
+
   return (
     <React.Fragment>
       <MUIAppBar
@@ -52,7 +54,7 @@ export default function AppBar(props: AppBarProps) {
             <Grid item xs />
             <Grid item>
               <Link
-                href="/"
+                href="https://github.com/zelxd/xellx"
                 variant="body2"
                 sx={{
                   textDecoration: "none",
@@ -64,20 +66,10 @@ export default function AppBar(props: AppBarProps) {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Go to docs
+                Xellx Github
               </Link>
             </Grid>
             <Grid item>
-              <Tooltip title="Alerts • No alerts">
-                <IconButton color="inherit">
-                  <NotificationsIcon />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-            <Grid item>
-              {/* <IconButton color="inherit" sx={{ p: 0.5 }}>
-                <Avatar src={session?.avatar} alt={session?.username} />
-              </IconButton> */}
               <AccountPopup />
             </Grid>
           </Grid>
@@ -99,21 +91,21 @@ export default function AppBar(props: AppBarProps) {
               </Typography>
             </Grid>
             <Grid item>
+              <Tooltip title="Go back">
+                <IconButton color="inherit">
+                  <GoBackIcon onClick={() => router.back()} />
+                </IconButton>
+              </Tooltip>
+            </Grid>
+            <Grid item>
               <Button
                 sx={{ borderColor: lightColor }}
                 variant="outlined"
                 color="inherit"
                 size="small"
               >
-                Web setup
+                Setup
               </Button>
-            </Grid>
-            <Grid item>
-              <Tooltip title="Help">
-                <IconButton color="inherit">
-                  <HelpIcon />
-                </IconButton>
-              </Tooltip>
             </Grid>
           </Grid>
         </Toolbar>
