@@ -78,13 +78,16 @@ export default function Navigator(props: DrawerProps) {
         <ListItem
           sx={{ ...item, ...itemCategory, fontSize: 22, color: "#fff" }}
         >
-          Xellx
+          <img
+            style={{
+              height: 40,
+              marginLeft: -6,
+            }}
+            src="/xellx.png"
+          />
         </ListItem>
         <ListItem sx={{ ...item, ...itemCategory }}>
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText>Project Overview</ListItemText>
+          <ListItemText>v0.01-alpha</ListItemText>
         </ListItem>
         {categories.map(({ id, children }) => (
           <Box key={id} sx={{ bgcolor: "#18183A" }}>
