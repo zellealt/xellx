@@ -1,15 +1,14 @@
 import * as React from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import ReactTimeAgo from "react-time-ago";
-import { Avatar } from "@mui/material";
+import { Avatar, Skeleton } from "@mui/material";
 import { Box, FormControlLabel, FormGroup, Switch } from "@mui/material";
 import randomMaterialColour from "../client-lib/randomMaterialColour";
 import { Guild, Role } from "../types/Types";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import auditLogTypeIcon from "../builders/auditLogTypeIcon";
-
-const capitalize = (s: string | any[]) =>
-  (s && s[0].toUpperCase() + s.slice(1)) || "";
+import columns from "./audit-log/columns";
+import shimmerColumns from "./audit-log/shimmerColumns";
 
 export const convertIDToRoleName = (guild_roles: Role[], text: string) => {
   const id = text.replace(/[^0-9]/g, "");
@@ -33,75 +32,6 @@ export const ServerAuditlog = (props: { guild: Guild; section?: any }) => {
     setDevMode(event.target.checked);
   };
 
-  const columns: GridColDef[] = [
-    {
-      field: "executor",
-      description: "The person who created this log.",
-      headerName: "Executor",
-      minWidth: 100,
-      flex: 0.3,
-      renderCell: (params) => (
-        <div
-          style={{
-            display: "flex",
-            gap: 10,
-            placeItems: "center",
-          }}
-        >
-          <Avatar src={params.value.avatar} />
-          {params.value.user}
-        </div>
-      ),
-    },
-    {
-      field: "message",
-      description: "The log message.",
-      headerName: "Message",
-      minWidth: 150,
-      flex: 1,
-    },
-    {
-      field: "type",
-      headerName: "Type",
-      description: "The way the log was created.",
-      width: 120,
-      renderCell: (params) => {
-        const Icon = auditLogTypeIcon(params.value);
-
-        return (
-          <>
-            <Icon />
-            <span
-              style={{
-                marginLeft: 3,
-                marginTop: 1,
-                fontWeight: 500,
-              }}
-            >
-              {capitalize(params.value.toLowerCase())}
-            </span>
-          </>
-        );
-      },
-    },
-    {
-      field: "date_created",
-      headerName: "Date Created",
-      description: "The date and time when the log was created.",
-      width: 130,
-      renderCell: (params) => (
-        <ReactTimeAgo date={params.value} locale="en-US" />
-      ),
-    },
-    {
-      field: "id",
-      headerName: "ID",
-      description: "Log ID for support or developers.",
-      hide: devMode ? false : true,
-      width: 110,
-    },
-  ];
-
   const { session, setSession } = React.useContext(SessionContext);
   const { guild, section } = props;
   const colour = randomMaterialColour()[500];
@@ -124,11 +54,24 @@ export const ServerAuditlog = (props: { guild: Guild; section?: any }) => {
     })
   );
 
+  if (rows.length === 0)
+    for (let i = 0; i < 10; i++) {
+      rows.push({
+        id: i.toString(),
+        executor: { user: "", avatar: "" },
+        message: "",
+        type: "",
+        date_created: new Date(),
+      });
+    }
+
+  const loading = !guild?.name;
+
   return (
     <Box sx={{ height: { xs: 500, lg: "100%" }, width: "100%" }}>
       <DataGrid
         rows={rows}
-        columns={columns}
+        columns={loading ? shimmerColumns : columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
