@@ -105,10 +105,10 @@ const AuditLog = () => {
     <Stack justifyContent="flex-start" alignItems="flex-start" spacing={1}>
       <IconButton
         sx={{
-          bgcolor: "rgba(130, 0, 244, 0.055)",
+          bgcolor: "rgba(135, 194, 112, 0.055)",
         }}
         onClick={() => setPage("plugins")}
-        color="primary"
+        color="secondary"
         aria-label="go back"
         component="div"
       >
@@ -180,6 +180,7 @@ const AuditLog = () => {
 
                                   setAudits(localAudits);
                                 }}
+                                color="secondary"
                                 checked={audit.active}
                               />
                             }
@@ -196,7 +197,7 @@ const AuditLog = () => {
       </Stack>
 
       <LoadingButton
-        color="primary"
+        color="secondary"
         onClick={saveChanges}
         loading={fetching}
         loadingPosition="start"

@@ -29,7 +29,7 @@ const PluginCard = (props: {
           <Typography variant="body2">{props.description}</Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={props.onClick} size="small">
+          <Button color="secondary" onClick={props.onClick} size="small">
             Settings
           </Button>
         </CardActions>

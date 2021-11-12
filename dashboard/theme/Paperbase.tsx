@@ -22,11 +22,16 @@ export function Copyright() {
 
 let theme = createTheme({
   palette: {
-    mode: "dark",
+    mode: "light",
     primary: {
-      light: "#b361ff",
-      main: "#7700e6",
-      dark: "#5c00b3",
+      light: "#9A9AD5",
+      main: "#6F6FC3",
+      dark: "#4848AD",
+    },
+    secondary: {
+      light: "#E0EFDA",
+      main: "#B7DAA9",
+      dark: "#87C270",
     },
   },
   typography: {
@@ -64,7 +69,7 @@ export const exportedTheme = {
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: "#081627",
+          backgroundColor: "#12122B",
         },
       },
     },
@@ -126,7 +131,7 @@ export const exportedTheme = {
       styleOverrides: {
         root: {
           "&.Mui-selected": {
-            color: "#b361ff",
+            color: "#9A9AD5",
           },
         },
       },

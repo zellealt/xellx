@@ -68,13 +68,13 @@ const AutoRole = () => {
   return (
     <Stack justifyContent="flex-start" alignItems="flex-start" spacing={2}>
       <IconButton
+        sx={{
+          bgcolor: "rgba(135, 194, 112, 0.055)",
+        }}
         onClick={() => setPage("plugins")}
-        color="primary"
+        color="secondary"
         aria-label="go back"
         component="div"
-        sx={{
-          bgcolor: "rgba(130, 0, 244, 0.055)",
-        }}
       >
         <ArrowBackIcon />
       </IconButton>
@@ -100,7 +100,7 @@ const AutoRole = () => {
         )}
       />
       <LoadingButton
-        color="primary"
+        color="secondary"
         onClick={saveChanges}
         loading={fetching}
         loadingPosition="start"

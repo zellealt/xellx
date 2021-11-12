@@ -87,7 +87,7 @@ export default function Navigator(props: DrawerProps) {
           <ListItemText>Project Overview</ListItemText>
         </ListItem>
         {categories.map(({ id, children }) => (
-          <Box key={id} sx={{ bgcolor: "#101F33" }}>
+          <Box key={id} sx={{ bgcolor: "#18183A" }}>
             <ListItem sx={{ py: 2, px: 3 }}>
               <ListItemText sx={{ color: "#fff" }}>{id}</ListItemText>
             </ListItem>
@@ -105,7 +105,7 @@ export default function Navigator(props: DrawerProps) {
           </Box>
         ))}
 
-        <Box key="Servers" sx={{ bgcolor: "#101F33" }}>
+        <Box key="Servers" sx={{ bgcolor: "#18183A" }}>
           <ListItem sx={{ py: 2, px: 3 }}>
             <ListItemText sx={{ color: "#fff" }}>Servers</ListItemText>
           </ListItem>
