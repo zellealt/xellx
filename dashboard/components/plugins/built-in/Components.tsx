@@ -16,7 +16,7 @@ const BuiltIn = () => {
         <PluginCard
           type="Built-in"
           name={<PluginName name="Audit Log" activated={true} />}
-          version="Alpha 0.0.4"
+          version="0.1-beta"
           description="Quickly review actions on your server"
           onClick={() => setPage("auditlog-plugin")}
         />
@@ -30,7 +30,7 @@ const BuiltIn = () => {
               activated={guild?.plugins?.auto_role !== 0}
             />
           }
-          version="Release 0.1"
+          version="0.1-beta"
           description="Assign all new members a role"
           onClick={() => setPage("auto-role-plugin")}
         />

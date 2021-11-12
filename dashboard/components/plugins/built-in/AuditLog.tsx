@@ -17,7 +17,7 @@ import { TransitionGroup } from "react-transition-group";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import Zoom from "@mui/material/Zoom";
 
-const audits = [
+const default_audits = [
   { name: "Deleted Messages", catagory: "Messages" },
   { name: "Edited Messages", catagory: "Messages" },
   { name: "User Bans", catagory: "Punishments" },
@@ -39,7 +39,7 @@ const audits = [
 ];
 
 const AuditLog = () => {
-  let categorys = audits.map((x) => x?.catagory);
+  let categorys = default_audits.map((x) => x?.catagory);
   categorys = categorys.filter(function (item, pos) {
     return categorys.indexOf(item) == pos;
   });
@@ -51,8 +51,15 @@ const AuditLog = () => {
     }))
   );
 
+  const [audits, setAudits] = React.useState(
+    default_audits.map((audit) => ({
+      name: audit?.name,
+      catagory: audit?.catagory,
+      active: false,
+    }))
+  );
+
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-  const [role, setRole] = React.useState<any>(null);
   const [fetching, setFetching] = React.useState<boolean>(false);
   const { guild, setGuild } = React.useContext(GuildContext);
   const { page, setPage } = React.useContext(ServerManageContext);
@@ -70,22 +77,20 @@ const AuditLog = () => {
   );
 
   React.useEffect(() => {
-    const role = guild?.roles?.find((x) => x.id === guild?.plugins?.auto_role);
-    setRole({ label: role! ? role.name : "", id: role! ? role.id : 0 });
+    if (guild?.plugins?.audit_log !== null)
+      setAudits(JSON.parse(guild?.plugins?.audit_log));
   }, []);
 
   const saveChanges = () => {
     setFetching(true);
-
-    let roleId: number = role?.id ? role?.id : 0;
 
     const url =
       "http://" +
       process.env.NEXT_PUBLIC_API_URI +
       "/api/discord/server/" +
       guild?.id +
-      "/set/auto-role?roleId=" +
-      roleId;
+      "/set/audit-log?data=" +
+      JSON.stringify(audits);
 
     fetch(url, {
       method: "POST",
@@ -93,7 +98,7 @@ const AuditLog = () => {
     }).then((res) => {
       if (res.ok) {
         const modifiedGuild = guild!;
-        modifiedGuild.plugins.auto_role = roleId;
+        modifiedGuild.plugins.audit_log = JSON.stringify(audits);
         setGuild(modifiedGuild);
         enqueueSnackbar("Successfully updated", { variant: "success" });
       } else {
@@ -170,7 +175,21 @@ const AuditLog = () => {
                       category.name === audit.catagory && (
                         <FormGroup>
                           <FormControlLabel
-                            control={<Switch defaultChecked />}
+                            control={
+                              <Switch
+                                onClick={() => {
+                                  let localAudits = audits.slice();
+                                  const i = localAudits.findIndex(
+                                    (x) => x.name === audit.name
+                                  );
+                                  localAudits[i].active =
+                                    localAudits[i].active != true;
+
+                                  setAudits(localAudits);
+                                }}
+                                checked={audit.active}
+                              />
+                            }
                             label={audit.name}
                           />
                         </FormGroup>

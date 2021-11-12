@@ -14,6 +14,7 @@ export type Config = {
 export type Plugins = {
   guild_id: number;
   sticky_roles: number[];
+  audit_log: any;
   auto_role: number;
 };
 
